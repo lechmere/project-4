@@ -15,6 +15,7 @@ matches_schema = MatchesSchema()
 
 router = Blueprint(__name__, 'users')
 
+# ? Registering a User
 @router.route('/signup', methods=['POST'])
 def signup():
   request_body = request.get_json()
@@ -22,7 +23,7 @@ def signup():
   user.save()
   return user_schema.jsonify(user), 200
 
-
+# ? Logging in a user
 @router.route('/login', methods=['POST'])
 def login():
   data = request.get_json()
@@ -38,7 +39,8 @@ def login():
 
   return { 'token': token, 'message': 'Welcome back' }
 
-
+# ? POSTing to likes table if current user likes the profile, and POSTing to the match
+# ? table if both users have liked each other. 
 @router.route('/likes', methods=['POST'])
 @secure_route 
 def like():
@@ -52,7 +54,7 @@ def like():
 
   like.save()
   
-  # ? Filtering the column of liked_id by the current user
+  # Filtering the column of liked_id by the current user
   reverse_check = Likes.query.filter_by(liked_id=g.current_user.id, liker_id=data['liked_id']).first()
 
   if not reverse_check:
@@ -68,3 +70,22 @@ def like():
 
     match.save()
     return matches_schema.jsonify(match), 200
+
+  # ? GETing data for a single user
+@router.route('/users/<int:id>', methods=['GET'])
+@secure_route
+def get_single_user(id):
+  single_user = User.query.get(id)
+
+  print(single_user)
+  if not single_user: 
+    return { 'message': 'No user found' }, 404
+
+  return user_schema.jsonify(single_user), 200
+
+# ? GETing all user data
+@router.route('/users', methods=['GET'])
+@secure_route
+def get_all_users():
+  users = User.query.all()
+  return user_schema.jsonify(users, many=True), 200
