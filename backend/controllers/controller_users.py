@@ -40,19 +40,13 @@ def login():
 @secure_route 
 def like():
   data = request.get_json()
-
-  instance = Likes(
-    liker_id = g.current_user.id,
-    # liked_id = data['liked_id']
-  )
-
-  instance.save()
+  print(data)
+  data['liker_id'] = g.current_user.id
 
   try:
-    like = likes_schema.load(instance)
+    like = likes_schema.load(data)
   except ValidationError as e:
     return { 'errors': e.messages, 'message': 'Something went wrong.' }
-
 
   like.save()
 

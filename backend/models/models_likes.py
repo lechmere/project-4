@@ -13,3 +13,4 @@ class Likes(db.Model, BaseModel):
   liked_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
   liker = db.relationship('User', backref='likes', foreign_keys=[liker_id])
+
