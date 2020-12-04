@@ -10,4 +10,5 @@ class Matches(db.Model, BaseModel):
   match_one_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
   match_two_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
-  user = db.relationship('User', backref='matches')
+  match_one = db.relationship('User', backref='matches', foreign_keys=[match_one_id])
+  match_two = db.relationship('User', foreign_keys=[match_two_id])

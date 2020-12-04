@@ -11,6 +11,6 @@ class LikesSchema(ma.SQLAlchemyAutoSchema, BaseSchema):
     load_instance = True
 
   liker = fields.Nested('UserSchema')
+  liked = fields.Nested('UserSchema')
   liker_id = fields.Integer()
   liked_id = fields.Integer()
-  

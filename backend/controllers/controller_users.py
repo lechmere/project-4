@@ -1,14 +1,17 @@
 from flask import g
 from flask import Blueprint, request
 from models.models_user import User
+from models.models_matches import Matches
 from serializers.serializers_user import UserSchema
 from serializers.serializers_likes import LikesSchema
+from serializers.serializers_matches import MatchesSchema
 from middleware.secure_route import secure_route
 from models.models_likes import Likes
 from marshmallow import ValidationError
 
 user_schema = UserSchema()
 likes_schema = LikesSchema()
+matches_schema = MatchesSchema()
 
 router = Blueprint(__name__, 'users')
 
@@ -40,7 +43,6 @@ def login():
 @secure_route 
 def like():
   data = request.get_json()
-  print(data)
   data['liker_id'] = g.current_user.id
 
   try:
@@ -49,5 +51,20 @@ def like():
     return { 'errors': e.messages, 'message': 'Something went wrong.' }
 
   like.save()
+  
+  # ? Filtering the column of liked_id by the current user
+  reverse_check = Likes.query.filter_by(liked_id=g.current_user.id, liker_id=data['liked_id']).first()
 
-  return likes_schema.jsonify(like), 200
+  if not reverse_check:
+    print('No Match Found!')
+    return likes_schema.jsonify(like), 200
+
+  else: 
+    print('Match Found!')
+    match = Matches(
+      match_one_id=g.current_user.id,
+      match_two_id=data['liked_id']
+    )
+
+    match.save()
+    return matches_schema.jsonify(match), 200

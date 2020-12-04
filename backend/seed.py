@@ -4,32 +4,52 @@ from models.models_likes import Likes
 
 with app.app_context():
 
-  db.drop_all()
-  db.create_all()
+    db.drop_all()
+    db.create_all()
 
-  bonnie = User(
-      username="bonnie",
-      email="bonnie@bonnie.com",
-      password="bonnie",
-      age=24,
-      image="hahaha",
-      postcode="SW1W 8TH"
-  )
+    bonnie = User(
+        username="bonnie",
+        email="bonnie@bonnie.com",
+        password="bonnie",
+        age=24,
+        image="hahaha",
+        postcode="SW1W 8TH"
+    )
 
-  clyde = User(
-      username="clyde",
-      email="clyde@clyde.com",
-      password="clyde",
-      age=24,
-      image="hahaha",
-      postcode="SW1W 8TH"
-  )
+    clyde = User(
+        username="clyde",
+        email="clyde@clyde.com",
+        password="clyde",
+        age=24,
+        image="hahaha",
+        postcode="SW1W 8TH"
+    )
 
-  bonnie.save()
-  clyde.save()
+    gatsby = User(
+        username="gatsby",
+        email="gatsby@gatsby.com",
+        password="gatsby",
+        age=24,
+        image="hahaha",
+        postcode="SW1W 8TH"
+    )
 
-  print('Users created')
+    daisy = User(
+        username="daisy",
+        email="daisy@daisy.com",
+        password="daisy",
+        age=24,
+        image="hahaha",
+        postcode="SW1W 8TH"
+    )
 
-  db.session.commit()
+    bonnie.save()
+    clyde.save()
+    gatsby.save()
+    daisy.save()
 
-  print('Completed!')
+    print('Users created')
+
+    db.session.commit()
+
+    print('Completed!')

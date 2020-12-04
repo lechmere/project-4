@@ -7,10 +7,9 @@ class Likes(db.Model, BaseModel):
 
   __tablename__ = 'likes'
   
-  # * Someone else's userID
   liker_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-  # * My userId
   liked_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
   liker = db.relationship('User', backref='likes', foreign_keys=[liker_id])
+  liked = db.relationship('User', foreign_keys=[liked_id])
 
