@@ -11,7 +11,7 @@ import ProfileMatch from './components/ProfileMatch'
 // ! Some starter code for your frontends, change this
 // ! however you like.
 const App = () => {
-  <BrowserRouter>
+  return <BrowserRouter>
     <Switch>
       <Route exact path="/" component={Home} />
       <Route exact path="/match" component={ProfileMatch} />
