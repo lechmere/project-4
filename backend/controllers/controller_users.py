@@ -89,3 +89,4 @@ def get_single_user(id):
 def get_all_users():
   users = User.query.all()
   return user_schema.jsonify(users, many=True), 200
+

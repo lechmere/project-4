@@ -14,3 +14,4 @@ export function isCreator(compareId) {
   if (!compareId) return false
   return getUserId() === compareId
 }
+

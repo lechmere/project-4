@@ -4,89 +4,100 @@ import { getUserId } from '../lib/auth'
 
 const ProfileMatch = (props) => {
   const [user, updateUser] = useState({})
-  const [userList, updateUserList] = useState({})
   const token = localStorage.getItem('token')
-  const profileId = 4
+  const userLength = Number(localStorage.getItem('UsersLength'))
+  const currentProfile = props.match.params.profileId
   const [likeData, updateLikeData] = useState({
-    liked_id: 3
+    liked_id: 4
   })
-  const randomUser = Math.floor(Math.random() * userList.length)
+  const [matchesInfo, updateMatchesInfo] = useState([])
+
+  // * Const to generate a random user for the next match. 
+  const randomUser = Math.floor(Math.random() * userLength + 1)
+
+  console.log(randomUser)
+  // const [randomUser, updateRandomUser] = useState(0)
+  console.log(userLength)
 
 
-  if (getUserId !== randomUser) {
-    // return gettingProfileId()
-    return console.log('Not a match - function to be called')
-  } else {
-    return console.log('UserID and dating profile ID matched')
+  // * Function that handles the information needed for POSTing to our likes table. 
+  function handleChange(event) {
+    const name = event.target.name
+    const value = event.target.value
+
+    const data = {
+      ...likeData,
+      [name]: value
+    }
+    updateLikeData(data)
+    handleLike()
   }
 
-
-
-  // console.log(getUserId())
-
-
-
-
-  // console.log(randomUser)
-
-
-  // * Function for pulling the information for the random profile. 
-  function gettingProfileId() {
-    axios.get(`/api/users/${profileId}`, {
+  // * Pulling the information on the current random user. 
+  useEffect(() => {
+    axios.get(`/api/users/${currentProfile}`, {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(resp => {
         updateUser(resp.data)
       })
       .catch(err => console.log(err))
-  }
-
-  function gettingAllUsers() {
-    axios.get('/api/users', {
-      headers: { Authorization: `Bearer ${token}` }
-    })
-      .then(resp => {
-        updateUserList(resp.data)
-      })
-      .catch(err => console.log(err))
-  }
-
-  // console.log(userList.length)
-
-  useEffect(() => {
-    gettingProfileId()
-    // gettingAllUsers()
   }, [])
 
-  function handleLike(event) {
-    event.preventDefault()
+  // {
+  //   getUserId === randomUser ?
+  //     console.log('UserId and dating profile ID matched - to generate another random number')
+  //     :
+  //     console.log('not matching ID - continue')
+  // }
+
+  // * Function that handles when a user 'likes' the profile. 
+  // * This pushs a POST request to our likes Table. 
+  function handleLike() {
     axios.post('/api/likes', likeData, {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(resp => {
-        if (resp.data.errors) return console.log(resp.data.errors)
-        props.history.push('/')
+        if (resp.data.errors) {
+          return console.log(resp.data.errors)
+        } else {
+          nextProfile()
+        }
       })
-    // // .then(() => {
-    // //   location.reload()
-    // // })
   }
 
+  // * Function to reload the matches page with the next random user. 
+  function nextProfile() {
+    props.history.push(`/match/${randomUser}`)
+    location.reload()
+  }
 
-  // console.log(user)
+  useEffect(() => {
+    axios.get('/api/matches', {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+      .then(resp => {
+        updateMatchesInfo(resp.data)
+      })
+      .catch(err => console.log(err))
+  }, [])
+
+  console.log(matchesInfo)
+
+
+
 
   return <main>
     <h1>{user.username}</h1>
-    <button>NO</button>
     <button
-      onClick={handleLike}
-      value={likeData.liked_id}
+      onClick={nextProfile}
+    >NO</button>
+    <button
+      onClick={handleChange}
+      value={likeData.liked_id = user.id}
       name="liked_id"
     >YES</button>
-
   </main>
-
-
 }
 
 export default ProfileMatch

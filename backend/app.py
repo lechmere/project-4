@@ -21,12 +21,13 @@ bcrypt = Bcrypt(app)
 
 # ! Uncomment and update
 from controllers import controller_users
-
+from controllers import controller_matches
 # ---
 
 # ! Uncomment and update
 # app.register_blueprint(teas.router, url_prefix="/api")
 app.register_blueprint(controller_users.router, url_prefix="/api")
+app.register_blueprint(controller_matches.router, url_prefix="/api")
 
 # ! Hello world flask app to start you off.
 @app.route('/')
