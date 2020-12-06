@@ -8,7 +8,6 @@ import Login from './components/Login'
 import Register from './components/Register'
 import Settings from './components/Settings'
 import ProfileMatch from './components/ProfileMatch'
-import NextMatch from './components/nextMatch'
 
 // ! Some starter code for your frontends, change this
 // ! however you like.
@@ -30,7 +29,6 @@ const App = () => {
     <Switch>
       <Route exact path="/" component={Home} />
       <Route exact path="/match/:profileId/" component={ProfileMatch} />
-      <Route exact path="/nextmatch/:profileId/" component={NextMatch} />
       <Route exact path="/login" component={Login} />
       <Route exact path="/settings" component={Settings} />
       <Route exact path="/register" component={Register} />
