@@ -12,15 +12,14 @@ class User(db.Model, BaseModel):
   __tablename__ = 'users'
 
   username = db.Column(db.String(15), nullable=False, unique=True)
+  first_name = db.Column(db.String(15), nullable=False, unique=False)
+  last_name = db.Column(db.String(15), nullable=False, unique=False)
   email = db.Column(db.String(128), nullable=False, unique=True)
   password_hash = db.Column(db.String(128), nullable=True)
   age = db.Column(db.Integer, nullable=False)
   image = db.Column(db.Text, nullable=False)
   postcode = db.Column(db.Text, nullable=False)
-  # bookshelf = db.relationship('Bookshelf', secondary=user_bookshelf_join, backref='users')
-  # genre = 
-  # messages = 
-
+  bio = db.Column(db.Text, nullable=False)
 
   # * --- PASSWORD STUFF
   @hybrid_property
