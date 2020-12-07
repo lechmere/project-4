@@ -18,15 +18,18 @@ const ProfileMatch = (props) => {
   })
   const [matchesInfo, updateMatchesInfo] = useState([])
 
+
+  // ? *******
   // * Const to generate a random user for the next match. 
-
-
   const [randomUser, updateRandomUser] = useState(Number)
 
   // * Function to generate a random user for the next match. 
   const createRandom = () => {
     updateRandomUser(Math.floor(Math.random() * userLength + 1))
   }
+  // ? *******
+
+  
 
   // * Checks that the random user is not the current user. If it is, it will generate a new 
   // * random user until it is not a match. 
@@ -39,7 +42,6 @@ const ProfileMatch = (props) => {
 
   useEffect(() => {
     getProfileInfo()
-    getMatchInfo()
     createRandom()
   }, [])
 
@@ -96,36 +98,30 @@ const ProfileMatch = (props) => {
         updateMatchesInfo(resp.data)
       })
       .catch(err => console.log(err))
-    console.log(matchesInfo)
   }
 
-  const matchOne = matchesInfo.map(match => {
-    return match.match_one_id
-  })
+  // const matchOne = matchesInfo.map(match => {
+  //   return match.match_one_id
+  // })
 
-  const matchTwo = matchesInfo.map(match => {
-    return match.match_two_id
-  })
+  // const matchTwo = matchesInfo.map(match => {
+  //   return match.match_two_id
+  // })
 
-  const stringedOne = matchOne.toString()
+  // // STRING TEST
+  // const stringedOne = matchOne.toString()
 
-  console.log(stringedOne)
-  // function findingMatch() {
-  //   if (matchTwo === userId) {
-  //     return console.log('its a match')
-  //   } else {
-  //     return console.log('no match yet!')
-  //   }
-  // }
+  function matchCheck() {
+    getMatchInfo()
+    console.log(matchesInfo)
 
-  // findingMatch()
-  // console.log(matchTwo)
-  // console.log(userId)
+  }
 
-  // Expected to pick only firstname and age keys
-  // console.log(
-  //   filter(matchesInfo, 'match_one_id', 'match_two_id')
-  // )
+  // EVERY time someone clicks yes 
+  // Get match info
+  // Filter out by current user 
+  // IF the last line on match table is current user && profile user
+  // Call popup function 
 
   return <>
   <Banner />
@@ -145,7 +141,7 @@ const ProfileMatch = (props) => {
       onClick={nextProfile}
     >NO</button>
     <button
-      onClick={handleChange}
+      onClick={handleChange, matchCheck}
       value={likeData.liked_id = user.id}
       name="liked_id"
     >YES</button>
