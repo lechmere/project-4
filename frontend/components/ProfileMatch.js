@@ -32,7 +32,7 @@ const ProfileMatch = (props) => {
       console.log('not matching ID - continue')
   }
 
-  useEffect(() => {s
+  useEffect(() => {
     getProfileInfo()
     getMatchInfo()
     createRandom()
