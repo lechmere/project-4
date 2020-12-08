@@ -8,7 +8,7 @@ function Message(props) {
   console.log(props)
   
   return <div>
-    <h1>MESSAGES!!</h1>
+    <h1 className="testing">MESSAGES!!</h1>
   </div>
 
 }

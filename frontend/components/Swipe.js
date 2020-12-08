@@ -2,7 +2,10 @@ import React, { useState, useEffect } from 'react'
 import TinderCard from 'react-tinder-card'
 import axios from 'axios'
 import { getUserId } from '../lib/auth'
+// import logo from '../images/logo.svg'
 import logo from '../images/logo.svg'
+
+
 import distance from '../images/distance-marker.svg'
 import decline from '../images/error-circle.svg'
 import accept from '../images/heart-circle.svg'
@@ -38,13 +41,14 @@ function Swipe() {
 
 
   // ? SWIPE matches check
-  function checkNewMatches() {
+  async function checkNewMatches() {
     console.log('Checking...')
-    axios.get('/api/matches', {
+    await axios.get('/api/matches', {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(resp => {
         updateMatchesInfo(resp.data)
+        // filterMatches(resp.data)
         console.log(resp.data)
       })
       .catch(err => console.log(err))
@@ -67,31 +71,40 @@ function Swipe() {
         headers: { Authorization: `Bearer ${token}` }
       })
         .then(
-          checkNewMatches()
-        )
-        .then(
-          filterMatches()
+          checkNewMatches(),
+          filteredMatches
+          // filterMatches()
         )
     }
   }
 
-
+  const filteredMatches = filterMatches()
+  console.log(filteredMatches)
+  
   // ? Filtering matches to see if the current user & character ID are in the matches table. 
   function filterMatches() {
+    console.log(matchesInfo)
     const myMatches = matchesInfo.filter((match) => {
-      return match.match_one_id === getUserId()
+      if (match.match_one_id === getUserId() || match.match_two_id === getUserId()) {
+        return myMatches
+      }
+      // console.log(myMatches)
+
+
+
+
     })
-    console.log(myMatches)
-    const result = myMatches.filter(match => {
-      return match.match_two_id === characterId
-    })
-    console.log(result)
+    // console.log(myMatches)
+    // const result = myMatches.filter(match => {
+    //   return match.match_two_id === characterId
+    // })
+    // console.log(result)
   }
 
 
   // console.log('its a match!' + result)
   // handleMatch()
-  
+
 
   // function handleMatch(event) {
   //   event.preventDefault()

@@ -5,16 +5,16 @@ import { Link } from 'react-router-dom'
 
 function MessageHome() {
   const token = localStorage.getItem('token')
-  const [allMessages, updateAllMessages] = useState([])
+  const [allMatches, updateAllMatches] = useState([])
   // const [userMessages, updateUserMessages] = useState([])
 
   useEffect(() => {
-    axios.get('/api/message', {
+    axios.get('/api/matches', {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(resp => {
         console.log(resp.data)
-        updateAllMessages(resp.data)
+        updateAllMatches(resp.data)
       })
       .catch(err => console.log(err))
   }, [])
@@ -22,29 +22,25 @@ function MessageHome() {
   console.log(getUserId())
 
 
-  // ? Filtering by conversations the user started 
-  const iStarted = allMessages.filter((message) => {
-    return message.from_user_id === getUserId()
-  })
-  console.log(iStarted)
-
-  // const checking = new Set(iStarted.to_user_id)
-
-  // console.log(checking)
+  // // ? Filtering by conversations the user started 
+  // const iStarted = allMessages.filter((message) => {
+  //   return message.from_user_id === getUserId()
+  // })
+  // console.log(iStarted)
 
 
-  // ? Filtering by conversations the match started 
-  const theyStarted = allMessages.filter((message) => {
-    return message.to_user_id === getUserId()
-  })
-  console.log(theyStarted)
+  // // ? Filtering by conversations the match started 
+  // const theyStarted = allMessages.filter((message) => {
+  //   return message.to_user_id === getUserId()
+  // })
+  // console.log(theyStarted)
 
 
   return <div>
-    <h1>MESSAGE HOME</h1>
-    {iStarted.map((messageTitle, index) => {
+    <h1 className="testing">MESSAGE HOME</h1>
+    {/* {iStarted.map((messageTitle, index) => {
       return <Link key={index} to={'/message'}>
-        <h2>{messageTitle.to_user.first_name} </h2>
+        <h2 className="testing">{messageTitle.to_user.first_name} </h2>
       </Link>
 
 
@@ -53,9 +49,9 @@ function MessageHome() {
 
     {theyStarted.map((messageTitle, index) => {
       return <Link key={index} to={'/message'}>
-        <h2>{messageTitle.to_user.first_name} </h2>
+        <h2 className="testing">{messageTitle.to_user.first_name} </h2>
       </Link>
-    })}
+    })} */}
   </div>
 
 
