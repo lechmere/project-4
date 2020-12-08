@@ -127,11 +127,11 @@ function Swipe() {
           </TinderCard>
         )}
       </div>
-      <div className="button-swipe">
+      <div className="button-group">
         <button className="button-style"><img className="button-img" src={decline} alt={'decline'} /></button>
-        <button className="button-style"><img className="button-img" id="accept" src={accept} alt={'accept'} /></button>
+        <button className="button-style" id="button-style-right"><img className="button-img" id="accept" src={accept} alt={'accept'} /></button>
       </div>
-      {lastDirection ? <h2 className='infoText'>You swiped {lastDirection}</h2> : <h2 className='infoText' />}
+      {lastDirection ? <h2 className='infoText'>You swiped {lastDirection}</h2> : <h2 className='infoText'> Get Swiping</h2>}
 
       {/* {itsAMatch === true ?
         <h1>ITS A MATCH!!!</h1>
