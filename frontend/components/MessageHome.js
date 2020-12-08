@@ -22,18 +22,18 @@ function MessageHome() {
   console.log(getUserId())
 
 
-  // // ? Filtering by conversations the user started 
-  // const iStarted = allMessages.filter((message) => {
-  //   return message.from_user_id === getUserId()
-  // })
-  // console.log(iStarted)
+  // ? Filtering by conversations the user started 
+  const iStarted = allMatches.filter((message) => {
+    return message.from_user_id === getUserId()
+  })
+  console.log(iStarted)
 
 
-  // // ? Filtering by conversations the match started 
-  // const theyStarted = allMessages.filter((message) => {
-  //   return message.to_user_id === getUserId()
-  // })
-  // console.log(theyStarted)
+  // ? Filtering by conversations the match started 
+  const theyStarted = allMatches.filter((message) => {
+    return message.to_user_id === getUserId()
+  })
+  console.log(theyStarted)
 
 
   return <div>
