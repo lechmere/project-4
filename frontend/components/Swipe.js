@@ -6,6 +6,7 @@ import logo from '../images/logo.svg'
 import distance from '../images/distance-marker.svg'
 import decline from '../images/error-circle.svg'
 import accept from '../images/heart-circle.svg'
+import Modal from './modal/Modal'
 
 
 function Swipe() {
@@ -17,7 +18,7 @@ function Swipe() {
   const [characters, updateCharacters] = useState([])
   const [matchesInfo, updateMatchesInfo] = useState([])
   const [characterId, updateCharacterId] = useState(Number)
-  // const [itsAMatch, updateitsAMatch] = useState()
+  const [isOpen, setIsOpen] = useState(false)
 
   useEffect(() => {
     checkNewMatches()
@@ -79,25 +80,24 @@ function Swipe() {
   // ? Filtering matches to see if the current user & character ID are in the matches table. 
   function filterMatches() {
     const myMatches = matchesInfo.filter((match) => {
-      return match.match_one_id === getUserId()
+      return match.match_one_id === getUserId() && match.match_two_id === getUserId()
     })
     console.log(myMatches)
     const result = myMatches.filter(match => {
-      return match.match_two_id === characterId
+      return match.match_two_id === characterId && match.match_one_id === characterId
     })
     console.log(result)
+    console.log('its a match!' + result)
   }
 
 
-  // console.log('its a match!' + result)
-  // handleMatch()
-  
 
   // function handleMatch(event) {
   //   event.preventDefault()
-  //   updateitsAMatch(!itsAMatch)
-  //   console.log(itsAMatch)
+  //   setIsOpen(!isOpen)
+  //   console.log(isOpen)
   // }
+
 
   const outOfFrame = (name) => {
     console.log(name + ' left the screen!')
@@ -107,6 +107,12 @@ function Swipe() {
     <img className="logo" src={logo} alt={'kindlr'} />
 
     <div>
+      <div className="buttonwrapper">
+        <button onClick={() => setIsOpen(true)}>Its a match</button>
+        <Modal open={isOpen} onClose={() => setIsOpen(false)}>
+          Congratulations! It's a match! 
+      </Modal>
+      </div>
       <div className='cardContainer'>
         {characters.map((character) =>
           <TinderCard className='swipe'
@@ -126,6 +132,8 @@ function Swipe() {
             </div>
           </TinderCard>
         )}
+        <br />
+        <p className="tinder-text">Oh no! You have run out of swipes!</p>
       </div>
       <div className="button-swipe">
         <button className="button-style"><img className="button-img" src={decline} alt={'decline'} /></button>

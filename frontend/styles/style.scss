@@ -81,13 +81,6 @@ main {
   z-index: 1;
 }
 
-.othercontent {
-  position: relative;
-  z-index: 2;
-  background-color: red;
-  padding: 10px;
-}
-
 .modal {
   position: fixed;
   top: 50%;
@@ -328,6 +321,10 @@ h3 {
   100% {
     transform: scale(1, 1);
   }
+}
+
+.tinder-text {
+  text-align: center;
 }
 
 // ? MENU
