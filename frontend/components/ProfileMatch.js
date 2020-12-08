@@ -126,16 +126,7 @@ const ProfileMatch = (props) => {
   return <>
   <Banner />
   <main>
-    <>
-      <div className="buttonwrapper">
-        {/* if match */}
-        <button onClick={() => setIsOpen(true)}>Its a match</button>
-        <Modal open={isOpen} onClose={() => setIsOpen(false)}>
-          Congratulations! It's a match! 
-      </Modal>
-      </div>
-      <div className="othercontent">Go get yourself some</div>
-    </>
+    
     <h1>{user.username}</h1>
     <button 
       onClick={nextProfile}
