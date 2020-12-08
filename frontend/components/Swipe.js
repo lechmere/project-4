@@ -2,29 +2,11 @@ import React, { useState, useEffect } from 'react'
 import TinderCard from 'react-tinder-card'
 import axios from 'axios'
 import { getUserId } from '../lib/auth'
+import logo from '../images/logo.svg'
+import distance from '../images/distance-marker.svg'
+import decline from '../images/error-circle.svg'
+import accept from '../images/heart-circle.svg'
 
-// const db = [
-//   {
-//     name: 'Richard Hendricks',
-//     url: './img/richard.jpg'
-//   },
-//   {
-//     name: 'Erlich Bachman',
-//     url: './img/erlich.jpg'
-//   },
-//   {
-//     name: 'Monica Hall',
-//     url: './img/monica.jpg'
-//   },
-//   {
-//     name: 'Jared Dunn',
-//     url: './img/jared.jpg'
-//   },
-//   {
-//     name: 'Dinesh Chugtai',
-//     url: './img/dinesh.jpg'
-//   }
-// ]
 
 function Swipe() {
   // const characters = db
@@ -90,6 +72,7 @@ function Swipe() {
     }
   }
 
+
   function filterMatches() {
     const myMatches = matchesInfo.filter(match => {
       return match.match_one_id === getUserId()
@@ -98,19 +81,17 @@ function Swipe() {
     const result = myMatches.filter(match => {
       return match.match_two_id === characterId
     })
-    console.log(myMatches)
+    console.log(result)
   }
 
-  
+
   const outOfFrame = (name) => {
     console.log(name + ' left the screen!')
   }
 
-  return (
+  return <div>
+    <img className="logo" src={logo} alt={'kindlr'} />
     <div>
-      <link href='https://fonts.googleapis.com/css?family=Damion&display=swap' rel='stylesheet' />
-      <link href='https://fonts.googleapis.com/css?family=Alatsi&display=swap' rel='stylesheet' />
-      <h1>React Tinder Card</h1>
       <div className='cardContainer'>
         {characters.map((character) =>
           <TinderCard className='swipe'
@@ -119,14 +100,25 @@ function Swipe() {
             onCardLeftScreen={() => outOfFrame(character.first_name)}
           >
             <div style={{ backgroundImage: 'url(' + character.image + ')' }} className='card'>
-              <h3>{character.first_name}</h3>
+              <div className='card-distance'>
+                <img src={distance} alt={'distance-arrow'} />
+                <h3>2.2 Km away</h3>
+              </div>
+              <div className='card-user'>
+                <h2>{character.first_name}, {character.age}</h2>
+                <h3>{character.bio}</h3>
+              </div>
             </div>
           </TinderCard>
         )}
       </div>
+      <div className="button-swipe">
+        <button className="button-style"><img className="button-img" src={decline} alt={'decline'} /></button>
+        <button className="button-style"><img className="button-img" id="accept" src={accept} alt={'accept'} /></button>
+      </div>
       {lastDirection ? <h2 className='infoText'>You swiped {lastDirection}</h2> : <h2 className='infoText' />}
     </div>
-  )
+  </div>
 }
 
 export default Swipe

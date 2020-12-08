@@ -9,12 +9,14 @@ import Register from './components/Register'
 import Settings from './components/Settings'
 import ProfileMatch from './components/ProfileMatch'
 import Swipe from './components/Swipe'
+import Menu from './components/Menu'
 
 // ! Some starter code for your frontends, change this
 // ! however you like.
 const App = () => {
 
   return <BrowserRouter>
+    <Menu />
     <Switch>
       <Route exact path="/" component={Home} />
       <Route exact path="/match/:profileId/" component={ProfileMatch} />

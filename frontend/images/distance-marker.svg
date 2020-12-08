@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="14px" height="14px" viewBox="0 0 14 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>distance-marker</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="101_Home" transform="translate(-48.000000, -122.000000)">
+            <g id="Group-4" transform="translate(40.000000, 113.000000)">
+                <g id="distance-marker" transform="translate(8.000000, 8.000000)">
+                    <rect id="bound" x="0" y="0" width="16" height="16"></rect>
+                    <path d="M3.25486679,11.4902664 L8.8563055,0.287389004 C8.9880331,0.0239338051 9.30839205,-0.0828525132 9.57184725,0.0488750861 C9.67506187,0.100482393 9.75875386,0.184174389 9.81036117,0.287389004 L15.4117999,11.4902664 C15.5435275,11.7537216 15.4367412,12.0740806 15.173286,12.2058082 C15.0443015,12.2703004 14.8946981,12.279811 14.7585852,12.2321715 L9.33333333,10.3333333 L3.90808151,12.2321715 C3.63006627,12.3294768 3.32580883,12.1829825 3.2285035,11.9049672 C3.18086398,11.7688543 3.19037454,11.6192509 3.25486679,11.4902664 Z" id="Path-99" fill="#FFFFFF" fill-rule="nonzero" transform="translate(9.333392, 6.127356) rotate(-315.000000) translate(-9.333392, -6.127356) "></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

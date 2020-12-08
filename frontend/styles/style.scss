@@ -1,23 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap");
+
+$monts: "Montserrat", sans-serif;
+$main-gradient: linear-gradient(180deg, #f3727d 0%, #f69e83 100%);
+
+
+// ? GLOBAL
 
 #root {
-  text-align: center;
   display: flex;
   justify-content: center;
   width: 100vw;
   min-height: 100vh;
   overflow: hidden;
-  /* background: linear-gradient(#fff, #999); */
-  background: linear-gradient(#e66465, #9198e5);
 }
 
-#root>div {
+#root > div {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.app>div {
+.app > div {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -28,19 +32,41 @@
   flex-direction: row !important;
 }
 
-.row>* {
+.row > * {
   margin: 5px;
 }
 
+// ! ********
+
+
+
+// ? FONTS
+
 h1 {
-  font-family: 'Damion', cursive;
+  font-family: "Damion", cursive;
   color: #fff;
-  text-shadow: 0px 0px 60px 0px rgba(0,0,0,0.30);
+  text-shadow: 0px 0px 60px 0px rgba(0, 0, 0, 0.3);
+  margin: 0px;
 }
 
 h2 {
-  color: #fff;
+  font-family: $monts;
+  font-size: 16px;
+  color: white;
+  margin: 0px;
 }
+
+h3 {
+  font-family: $monts;
+  font-weight: 400;
+  font-size: 13px;
+  margin: 0px;
+}
+
+// ! ********
+
+
+
 
 .swipe {
   position: absolute;
@@ -48,7 +74,7 @@ h2 {
 
 .cardContainer {
   width: 90vw;
-  max-width: 260px;
+  max-width: 300px;
   height: 300px;
 }
 
@@ -56,10 +82,9 @@ h2 {
   position: relative;
   background-color: #fff;
   width: 80vw;
-  max-width: 260px;
-  height: 300px;
-  box-shadow: 0px 0px 60px 0px rgba(0,0,0,0.30);
-  border-radius: 20px;
+  max-width: 300px;
+  height: 380px;
+  border-radius: 30px;
   background-size: cover;
   background-position: center;
 }
@@ -69,15 +94,71 @@ h2 {
   height: 100%;
 }
 
-.swipe:last-of-type {
+.card-distance {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: rgba(40, 40, 40, 0.6);
+  border-radius: 16px;
+  height: 32px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 
+  img {
+    padding-left: 10px;
+  }
+
+  h3 {
+    color: white;
+    padding: 0px 10px 0px 10px;
+  }
 }
 
-.card h3 {
+.card-user {
   position: absolute;
-  bottom: 0;
-  margin: 10px;
-  color: #fff;
+  height: 90px;
+  background-image: linear-gradient(rgba(243, 114, 125, 0.8), rgba(246, 158, 131, 0.8));
+  border-radius: 0 0 30px 30px;
+  bottom: 0px;
+  width: 80vw;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+
+  h2 {
+    margin-left: 24px;
+    margin-bottom: 8px;
+  }
+
+  h3 {
+    margin-left: 24px;
+    color: white;
+  }
+}
+
+.button-swipe {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.logo {
+  margin-bottom: 20px;
+}
+
+.button-style {
+  position: relative;
+  top: 120px;
+  height: 80px;
+  width: 80px;
+  background-image: linear-gradient(180deg, #f3727d 0%, #f69e83 100%);
+  box-shadow: 0 4px 15px 0 #e8c6c9;
+  border-radius: 100px;
+  border: none;
 }
 
 .infoText {
@@ -95,6 +176,10 @@ h2 {
   display: flex;
 }
 
+#accept {
+  margin-top: 5px;
+}
+
 .buttons button {
   flex-shrink: 0;
   padding: 10px;
@@ -107,7 +192,12 @@ h2 {
   margin: 0 10px;
   font-weight: bolder;
   width: 160px;
-  box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.10);
+  box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.1);
+}
+
+.button-img {
+  height: 35px;
+  width: 35px;
 }
 
 .buttons button:hover {
@@ -115,11 +205,51 @@ h2 {
 }
 
 @keyframes popup {
-  0%   { transform: scale(1,1) }
-  10%  { transform: scale(1.1,1.1) }
-  30%  { transform: scale(.9,.9) }
-  50%  { transform: scale(1,1) }
-  57%  { transform: scale(1,1) }
-  64%  { transform: scale(1,1) }
-  100% { transform: scale(1,1) }
+  0% {
+    transform: scale(1, 1);
+  }
+  10% {
+    transform: scale(1.1, 1.1);
+  }
+  30% {
+    transform: scale(0.9, 0.9);
+  }
+  50% {
+    transform: scale(1, 1);
+  }
+  57% {
+    transform: scale(1, 1);
+  }
+  64% {
+    transform: scale(1, 1);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
 }
+
+// ? MENU
+
+nav {
+  position: absolute;
+  height: 56px;
+  background-image: linear-gradient(180deg, #f0f0ff 0%, #dbddff 100%);
+  border-radius: 20px;
+  width: 100%;
+  max-width: 300px;
+  bottom: 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
+  button {
+    border: none;
+    background-color: transparent;
+  }
+
+  img {
+    width: 24px;
+    height: 24px
+  }
+}
+
