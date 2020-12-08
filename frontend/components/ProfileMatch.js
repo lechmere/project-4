@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { getUserId } from '../lib/auth'
+import Modal from './modal/Modal'
+import NavBar from './NavBar'
+import Banner from './Banner'
+// import { PopUp } from './components/modal/PopUp';
 
 const ProfileMatch = (props) => {
   const [user, updateUser] = useState({})
+  const [isOpen, setIsOpen] = useState(false)
   const [userId, updateUserId] = useState({})
   const token = localStorage.getItem('token')
   const userLength = Number(localStorage.getItem('UsersLength'))
@@ -118,9 +123,21 @@ const ProfileMatch = (props) => {
   // IF the last line on match table is current user && profile user
   // Call popup function 
 
-  return <main>
+  return <>
+  <Banner />
+  <main>
+    <>
+      <div className="buttonwrapper">
+        {/* if match */}
+        <button onClick={() => setIsOpen(true)}>Its a match</button>
+        <Modal open={isOpen} onClose={() => setIsOpen(false)}>
+          Congratulations! It's a match! 
+      </Modal>
+      </div>
+      <div className="othercontent">Go get yourself some</div>
+    </>
     <h1>{user.username}</h1>
-    <button
+    <button 
       onClick={nextProfile}
     >NO</button>
     <button
@@ -131,6 +148,8 @@ const ProfileMatch = (props) => {
 
 
   </main>
+  <NavBar />
+  </>
 }
 
 export default ProfileMatch

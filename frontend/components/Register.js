@@ -1,16 +1,18 @@
 import React, { useState } from 'react'
 // import axios from 'axios'
 import { Link } from 'react-router-dom'
+import NavBar from './NavBar'
+import Banner from './Banner'
 
 const Register = (props) => {
 
   const [formData, updateFormData] = useState({
-    firstName: '',
-    lastName: '',
+    first_name: '',
+    last_name: '',
     username: '',
     email: '',
     password: '',
-    passwordConfirmation: '',
+    password_confirmation: '',
     age: '',
     image: '',
     postcode: '',
@@ -38,7 +40,9 @@ const Register = (props) => {
   //     })
   // }
 
-  return <div className="session">
+  return <>
+  <Banner />
+  <div className="session">
     <div className="left">
     </div>
     <form action="" className="log-in" autoComplete="off">
@@ -51,7 +55,7 @@ const Register = (props) => {
           className="input" 
           type="text"
           onChange={handleChange}
-          value={formData.firstname}
+          value={formData.first_name}
           name="firstname"
         />
       </div>
@@ -62,7 +66,7 @@ const Register = (props) => {
           className="input"
           type="text"
           onChange={handleChange}
-          value={formData.last}
+          value={formData.last_name}
           name="lastname"
         />
       </div>
@@ -101,7 +105,7 @@ const Register = (props) => {
         <input className="input"
           type="password"
           onChange={handleChange}
-          value={formData.passwordConfirmation}
+          value={formData.password_confirmation}
           name="passwordConfirmation"
         />
       </div >
@@ -154,6 +158,7 @@ const Register = (props) => {
       {<Link to='/' className="discrete">Have an account? Login</Link>}
     </form>
   </div>
+  </>
 }
 
 export default Register
