@@ -9,6 +9,7 @@ import logo from '../images/logo.svg'
 import distance from '../images/distance-marker.svg'
 import decline from '../images/error-circle.svg'
 import accept from '../images/heart-circle.svg'
+import Modal from './modal/Modal'
 
 
 function Swipe() {
@@ -20,7 +21,7 @@ function Swipe() {
   const [characters, updateCharacters] = useState([])
   const [matchesInfo, updateMatchesInfo] = useState([])
   const [characterId, updateCharacterId] = useState(Number)
-  // const [itsAMatch, updateitsAMatch] = useState()
+  const [isOpen, setIsOpen] = useState(false)
 
   useEffect(() => {
     checkNewMatches()
@@ -108,9 +109,10 @@ function Swipe() {
 
   // function handleMatch(event) {
   //   event.preventDefault()
-  //   updateitsAMatch(!itsAMatch)
-  //   console.log(itsAMatch)
+  //   setIsOpen(!isOpen)
+  //   console.log(isOpen)
   // }
+
 
   const outOfFrame = (name) => {
     console.log(name + ' left the screen!')
@@ -120,6 +122,12 @@ function Swipe() {
     <img className="logo" src={logo} alt={'kindlr'} />
 
     <div>
+      <div className="buttonwrapper">
+        <button onClick={() => setIsOpen(true)}>Its a match</button>
+        <Modal open={isOpen} onClose={() => setIsOpen(false)}>
+          Congratulations! It's a match! 
+      </Modal>
+      </div>
       <div className='cardContainer'>
         {characters.map((character) =>
           <TinderCard className='swipe'
@@ -139,12 +147,14 @@ function Swipe() {
             </div>
           </TinderCard>
         )}
+        <br />
+        <p className="tinder-text">Oh no! You have run out of swipes!</p>
       </div>
-      <div className="button-swipe">
+      <div className="button-group">
         <button className="button-style"><img className="button-img" src={decline} alt={'decline'} /></button>
-        <button className="button-style"><img className="button-img" id="accept" src={accept} alt={'accept'} /></button>
+        <button className="button-style" id="button-style-right"><img className="button-img" id="accept" src={accept} alt={'accept'} /></button>
       </div>
-      {lastDirection ? <h2 className='infoText'>You swiped {lastDirection}</h2> : <h2 className='infoText' />}
+      {lastDirection ? <h2 className='infoText'>You swiped {lastDirection}</h2> : <h2 className='infoText'> Get Swiping</h2>}
 
       {/* {itsAMatch === true ?
         <h1>ITS A MATCH!!!</h1>

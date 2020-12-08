@@ -1,78 +1,324 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap");
 
-$monts: "Montserrat", sans-serif;
+// ***** || GLOBAL VARIABLES 
+
+$monts: "Montserrat",
+sans-serif;
 $main-gradient: linear-gradient(180deg, #f3727d 0%, #f69e83 100%);
+$blue : #575CB3;
 
 
-// ? GLOBAL
+
+
+
+// ***** || GLOBAL FONTS
+
+h1 {
+  font-family: "Damion", cursive;
+  color: #fff;
+  text-shadow: 0px 0px 60px 0px rgba(0, 0, 0, 0.3);
+  margin: 0px;
+}
+
+h2 {
+  font-family: $monts;
+  font-size: 16px;
+  color: white;
+  margin: 0px;
+}
+
+h3 {
+  font-family: $monts;
+  font-weight: 400;
+  font-size: 13px;
+  margin: 0px;
+}
+
+
 main {
   height: calc(100vh - 210px);
   width: 100vw;
   background-color: white;
 }
-// ************** Banner **************
-.banner {
-  height: 100px;
-  width: 100vw;
-  position: sticky;
-  top: 0;
-  background-color: white;
+
+.bg-color {
+  background-image: url("../images/BG.svg");
+  background-color: #cccccc;
+}
+
+
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #FFF;
+  padding: 50px;
+  z-index: 1000;
+}
+
+// ***** || GLOBAL PAGES - IMPORT TINDER SWIPE
+
+body {
+  margin: 0px;
+}
+
+#root {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+#root>div {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-bottom: 10px solid white;
+  height: min-content
 }
 
-.banner-title {
-  font-family: 'Roboto', sans-serif;
-  font-size: 60px;
-  font-weight: bolder;
-  text-align: center;
-  background: -webkit-linear-gradient(#F3747D, #F59C82);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.app>div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-// ************** NavBar **************
+.row {
+  flex-direction: row !important;
+}
 
-.navbar {
-  height: 70px;
-  width: 100%;
-  background-image: linear-gradient(#EFF0FF, #DCDEFF);
+.row>* {
+  margin: 5px;
+}
+
+
+
+
+
+
+// ***** || SWIPE PAGE 
+
+.cardContainer {
+  min-width: 327px;
+  height: 343px;
+}
+
+.swipe {
+  position: absolute;
+}
+
+.card {
+  position: relative;
+  background-color: #fff;
+  min-width: 327px;
+  height: 342px;
+  border-radius: 30px;
+  background-size: cover;
+  background-position: center;
+}
+
+
+// ? DISTANCE '2.2 KM AWAY'
+.card-distance {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: rgba(40, 40, 40, 0.6);
+  border-radius: 16px;
+  height: 32px;
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
-  position: sticky;
-  bottom: 0;
-  border-radius: 20px;
+
+  img {
+    padding-left: 10px;
+  }
+
+  h3 {
+    color: white;
+    padding: 0px 10px 0px 10px;
+  }
 }
 
-.navbar-link {
+
+// ? USERNAME DETAILS
+.card-user {
+  position: absolute;
+  height: 90px;
+  background-image: linear-gradient(rgba(243, 114, 125, 0.8), rgba(246, 158, 131, 0.8));
+  border-radius: 0 0 30px 30px;
+  bottom: 0px;
+  min-width: 327px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+
+  h2 {
+    margin-left: 24px;
+    margin-bottom: 8px;
+  }
+
+  h3 {
+    margin-left: 24px;
+    color: white;
+  }
+}
+
+
+// ? HOMEPAGE BUTTONS
+.button-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.button-style {
+  height: 56px;
+  width: 56px;
+  background-image: linear-gradient(180deg, #f3727d 0%, #f69e83 100%);
+  box-shadow: 0 4px 15px 0 #e8c6c9;
+  border-radius: 100px;
+  border: none;
+  margin-left: 0px;
+  margin-right: 28px;
+
+  img {
+    height: 30px;
+    width: 30px;
+    margin-top: 4px
+  }
+}
+
+#button-style-right {
+  margin-left: 28px;
+  margin-right: 0px
+}
+
+#accept {
+  margin-top: 5px;
+}
+
+
+// ? LOGO
+.logo {
+  margin-bottom: 20px;
+}
+
+
+// ? YOU SWIPED LEFT
+.infoText {
+  width: 100%;
+  height: 28px;
+  justify-content: center;
+  display: flex;
+  color: $blue;
+  font-weight: 400;
+  animation-name: popup;
+  animation-duration: 800ms;
+  margin: 24px 0px 16px 0px;
+  opacity: 0.75;
+}
+
+
+
+
+
+.buttons button:hover {
+  transform: scale(1.05);
+}
+
+@keyframes popup {
+  0% {
+    transform: scale(1, 1);
+  }
+
+  10% {
+    transform: scale(1.1, 1.1);
+  }
+
+  30% {
+    transform: scale(0.9, 0.9);
+  }
+
+  50% {
+    transform: scale(1, 1);
+  }
+
+  57% {
+    transform: scale(1, 1);
+  }
+
+  64% {
+    transform: scale(1, 1);
+  }
+
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+
+
+
+
+// ***** || MENU
+.tinder-text {
   text-align: center;
-  width: 25%;
 }
 
-.navbar-match {
-  height: 75px;
-  width: 75px;
-  // background: url('');
-  // background-size: contain;
+// ? MENU
+
+nav {
+
+  height: 56px;
+  background-image: linear-gradient(180deg, #F0F0FF 0%, #CCCEFF 100%);
+  box-shadow: 0 2px 25px 0 rgba(50,53,110,0.10);
+  border-radius: 20px;
+  width: 100%;
+  max-width: 300px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
+  button {
+    border: none;
+    background-color: transparent;
+  }
+
+  img {
+    width: 24px;
+    height: 24px
+  }
 }
 
-.navbar-profile {
-  height: 75px;
-  width: 75px;
-  // background: url('');
-  // background-size: contain;
+<<<<<<< HEAD
+
+
+
+.testing {
+  color: black
+}
+=======
+.nav-icon:hover .icon-passive,
+.nav-icon .icon-active {
+  display: none;
 }
 
-.navbar-messages {
-  height: 75px;
-  width: 75px;
-  // background: url('');
-  // background-size: contain;
+.nav-icon:hover .icon-active {
+  display: inline;
 }
+
+
+
 
 // ************** Profile Match **************
 
@@ -108,256 +354,72 @@ main {
   z-index: 1000;
 }
 
-#root {
-  display: flex;
-  justify-content: center;
-  width: 100vw;
-  min-height: 100vh;
-  overflow: hidden;
-}
-
-#root > div {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.app > div {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.row {
-  flex-direction: row !important;
-}
-
-.row > * {
-  margin: 5px;
-}
-
-// ! ********
-
-
-
-// ? FONTS
-
-h1 {
-  font-family: "Damion", cursive;
-  color: #fff;
-  text-shadow: 0px 0px 60px 0px rgba(0, 0, 0, 0.3);
-  margin: 0px;
-}
-
-h2 {
-  font-family: $monts;
-  font-size: 16px;
-  color: white;
-  margin: 0px;
-}
-
-h3 {
-  font-family: $monts;
-  font-weight: 400;
-  font-size: 13px;
-  margin: 0px;
-}
-
-// ! ********
 
 
 
 
-.swipe {
-  position: absolute;
-}
 
-.cardContainer {
-  width: 90vw;
-  max-width: 300px;
-  height: 300px;
-}
+// // ************** Banner **************
+// .banner {
+//   height: 100px;
+//   width: 100vw;
+//   position: sticky;
+//   top: 0;
+//   background-color: white;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   border-bottom: 10px solid white;
+// }
 
-.card {
-  position: relative;
-  background-color: #fff;
-  width: 80vw;
-  max-width: 300px;
-  height: 380px;
-  border-radius: 30px;
-  background-size: cover;
-  background-position: center;
-}
+// .banner-title {
+//   font-family: 'Roboto', sans-serif;
+//   font-size: 60px;
+//   font-weight: bolder;
+//   text-align: center;
+//   background: -webkit-linear-gradient(#F3747D, #F59C82);
+//   -webkit-background-clip: text;
+//   -webkit-text-fill-color: transparent;
+// }
 
-.cardContent {
-  width: 100%;
-  height: 100%;
-}
+// // ************** NavBar **************
 
-.card-distance {
-  position: absolute;
-  top: 16px;
-  left: 16px;
-  background: rgba(40, 40, 40, 0.6);
-  border-radius: 16px;
-  height: 32px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+// .navbar {
+//   height: 70px;
+//   width: 100%;
+//   background-image: linear-gradient(#EFF0FF, #DCDEFF);
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: space-evenly;
+//   align-items: center;
+//   position: sticky;
+//   bottom: 0;
+//   border-radius: 20px;
+// }
 
-  img {
-    padding-left: 10px;
-  }
+// .navbar-link {
+//   text-align: center;
+//   width: 25%;
+// }
 
-  h3 {
-    color: white;
-    padding: 0px 10px 0px 10px;
-  }
-}
+// .navbar-match {
+//   height: 75px;
+//   width: 75px;
+//   // background: url('');
+//   // background-size: contain;
+// }
 
-.card-user {
-  position: absolute;
-  height: 90px;
-  background-image: linear-gradient(rgba(243, 114, 125, 0.8), rgba(246, 158, 131, 0.8));
-  border-radius: 0 0 30px 30px;
-  bottom: 0px;
-  width: 80vw;
-  max-width: 300px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
+// .navbar-profile {
+//   height: 75px;
+//   width: 75px;
+//   // background: url('');
+//   // background-size: contain;
+// }
 
-  h2 {
-    margin-left: 24px;
-    margin-bottom: 8px;
-  }
-
-  h3 {
-    margin-left: 24px;
-    color: white;
-  }
-}
-
-.button-swipe {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-}
-
-.logo {
-  margin-bottom: 20px;
-}
-
-.button-style {
-  position: relative;
-  top: 120px;
-  height: 80px;
-  width: 80px;
-  background-image: linear-gradient(180deg, #f3727d 0%, #f69e83 100%);
-  box-shadow: 0 4px 15px 0 #e8c6c9;
-  border-radius: 100px;
-  border: none;
-}
-
-.infoText {
-  width: 100%;
-  height: 28px;
-  justify-content: center;
-  display: flex;
-  color: #fff;
-  animation-name: popup;
-  animation-duration: 800ms;
-}
-
-.buttons {
-  margin: 20px;
-  display: flex;
-}
-
-#accept {
-  margin-top: 5px;
-}
-
-.buttons button {
-  flex-shrink: 0;
-  padding: 10px;
-  border-radius: 5px;
-  border: none;
-  color: #fff;
-  font-size: 18px;
-  background-color: #9198e5;
-  transition: 200ms;
-  margin: 0 10px;
-  font-weight: bolder;
-  width: 160px;
-  box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.1);
-}
-
-.button-img {
-  height: 35px;
-  width: 35px;
-}
-
-.buttons button:hover {
-  transform: scale(1.05);
-}
-
-@keyframes popup {
-  0% {
-    transform: scale(1, 1);
-  }
-  10% {
-    transform: scale(1.1, 1.1);
-  }
-  30% {
-    transform: scale(0.9, 0.9);
-  }
-  50% {
-    transform: scale(1, 1);
-  }
-  57% {
-    transform: scale(1, 1);
-  }
-  64% {
-    transform: scale(1, 1);
-  }
-  100% {
-    transform: scale(1, 1);
-  }
-}
-
-// ? MENU
-
-nav {
-  position: absolute;
-  height: 56px;
-  background-image: linear-gradient(180deg, #f0f0ff 0%, #dbddff 100%);
-  border-radius: 20px;
-  width: 100%;
-  max-width: 300px;
-  bottom: 100px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-
-  button {
-    border: none;
-    background-color: transparent;
-  }
-
-  img {
-    width: 24px;
-    height: 24px
-  }
-}
-
-
-
-
-.testing {
-  color: black
-}
+// .navbar-messages {
+//   height: 75px;
+//   width: 75px;
+//   // background: url('');
+//   // background-size: contain;
+// }
+>>>>>>> development

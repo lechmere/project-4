@@ -41,7 +41,7 @@ const Login = (props) => {
 
   return <>
   <Banner />
-  <main>
+  <main className="bg-color">
     <section className="cover">
       <h1>Login</h1>
     </section>

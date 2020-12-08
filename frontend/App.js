@@ -19,7 +19,6 @@ import Message from './components/Message'
 const App = () => {
 
   return <BrowserRouter>
-    <Menu />
     <Switch>
       <Route exact path="/" component={Home} />
       <Route exact path="/match/:profileId/" component={ProfileMatch} />
@@ -31,6 +30,7 @@ const App = () => {
       <Route exact path="/message-home" component={MessageHome} />
       <Route exact path="/message" component={Message} />
     </Switch>
+    <Menu />
   </BrowserRouter>
 }
 
