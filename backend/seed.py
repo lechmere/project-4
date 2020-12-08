@@ -1,6 +1,7 @@
 from app import app, db
 from models.models_user import User
 from models.models_likes import Likes
+from models.models_message import Message
 
 with app.app_context():
 

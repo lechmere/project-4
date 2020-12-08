@@ -35,8 +35,11 @@ function Swipe() {
   const [characters, updateCharacters] = useState([])
   const [matchesInfo, updateMatchesInfo] = useState([])
   const [characterId, updateCharacterId] = useState(Number)
+  const [itsAMatch, updateitsAMatch] = useState()
 
-
+  useEffect(() => {
+    checkNewMatches()
+  }, [])
 
   // ? GET a list of all USERS to update CHARACTERS for CARDS
   useEffect(() => {
@@ -52,7 +55,6 @@ function Swipe() {
   // ? ----
 
 
-
   // ? SWIPE matches check
   function checkNewMatches() {
     console.log('Checking...')
@@ -61,6 +63,7 @@ function Swipe() {
     })
       .then(resp => {
         updateMatchesInfo(resp.data)
+        console.log(resp.data)
       })
       .catch(err => console.log(err))
   }
@@ -90,21 +93,30 @@ function Swipe() {
     }
   }
 
+  // ? Filtering matches to see if the current user & character ID are in the matches table. 
   function filterMatches() {
-    const myMatches = matchesInfo.filter(match => {
+    const myMatches = matchesInfo.filter((match) => {
       return match.match_one_id === getUserId()
     })
-
+    console.log(myMatches)
     const result = myMatches.filter(match => {
       return match.match_two_id === characterId
     })
-    console.log(myMatches)
+    // console.log('its a match!' + result)
+    handleMatch()
+    return result
   }
 
-  
+  function handleMatch(event) {
+    event.preventDefault()
+    updateitsAMatch(!itsAMatch)
+    console.log(itsAMatch)
+  }
+
   const outOfFrame = (name) => {
     console.log(name + ' left the screen!')
   }
+
 
   return (
     <div>
@@ -125,6 +137,12 @@ function Swipe() {
         )}
       </div>
       {lastDirection ? <h2 className='infoText'>You swiped {lastDirection}</h2> : <h2 className='infoText' />}
+
+      {itsAMatch === true ?
+        <h1>ITS A MATCH!!!</h1>
+        :
+        <h1>NOT A MATCH!!</h1>
+      }
     </div>
   )
 }

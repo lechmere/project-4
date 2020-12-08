@@ -9,6 +9,8 @@ import Register from './components/Register'
 import Settings from './components/Settings'
 import ProfileMatch from './components/ProfileMatch'
 import Swipe from './components/Swipe'
+import MessageHome from './components/MessageHome'
+import Message from './components/Message'
 
 // ! Some starter code for your frontends, change this
 // ! however you like.
@@ -22,6 +24,8 @@ const App = () => {
       <Route exact path="/settings" component={Settings} />
       <Route exact path="/register" component={Register} />
       <Route exact path="/swipe" component={Swipe} />
+      <Route exact path="/message-home" component={MessageHome} />
+      <Route exact path="/message" component={Message} />
     </Switch>
   </BrowserRouter>
 }
