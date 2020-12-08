@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import Banner from './Banner'
 
 // * Standard Login Form (Pre populate?)
 // * Once logged in -> Link to Home
@@ -38,7 +39,9 @@ const Login = (props) => {
       })
   }
 
-  return <main>
+  return <>
+  <Banner />
+  <main>
     <section className="cover">
       <h1>Login</h1>
     </section>
@@ -75,6 +78,7 @@ const Login = (props) => {
     </section>
 
   </main>
+  </>
 }
 
 export default Login
