@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import TinderCard from 'react-tinder-card'
 import axios from 'axios'
-import { getUserId } from '../lib/auth'
-// import logo from '../images/logo.svg'
 import logo from '../images/logo.svg'
-
-
 import distance from '../images/distance-marker.svg'
 import decline from '../images/error-circle.svg'
 import accept from '../images/heart-circle.svg'
@@ -20,12 +16,9 @@ function Swipe() {
   const token = localStorage.getItem('token')
   const [characters, updateCharacters] = useState([])
   const [matchesInfo, updateMatchesInfo] = useState([])
-  const [characterId, updateCharacterId] = useState(Number)
+  const [characterId, updateCharacterId] = useState(0)
   const [isOpen, setIsOpen] = useState(false)
 
-  useEffect(() => {
-    checkNewMatches()
-  }, [])
 
   // ? GET a list of all USERS to update CHARACTERS for CARDS
   useEffect(() => {
@@ -33,7 +26,6 @@ function Swipe() {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(resp => {
-        console.log(resp.data)
         updateCharacters(resp.data)
       })
       .catch(err => console.log(err))
@@ -41,78 +33,60 @@ function Swipe() {
   // ? ----
 
 
-  // ? SWIPE matches check
-  async function checkNewMatches() {
-    console.log('Checking...')
-    await axios.get('/api/matches', {
+  // ? Checking matches table - being called in the SWIPED function
+  function checkNewMatches(characterId) {
+    axios.get('/api/matches', {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(resp => {
+        filtering(resp.data, characterId)
         updateMatchesInfo(resp.data)
-        // filterMatches(resp.data)
-        console.log(resp.data)
+        // console.log(resp.data)
+
       })
       .catch(err => console.log(err))
   }
   // ? ----
-
-
 
   // ? Moving Deck
   const swiped = (direction, nameToDelete, characterId) => {
     console.log('removing: ' + nameToDelete)
     setLastDirection(direction)
     updateCharacterId(characterId)
-
+    console.log(characterId , "inside swiped")
     // ? IF right POST to LIKES table
     if (direction === 'right') {
-      console.log('Moved Right')
+      // console.log('Moved Right')
 
       axios.post('/api/likes', { liked_id: characterId }, {
         headers: { Authorization: `Bearer ${token}` }
       })
         .then(
-          checkNewMatches(),
-          filteredMatches
-          // filterMatches()
+          checkNewMatches(characterId),
         )
     }
   }
 
-  const filteredMatches = filterMatches()
-  console.log(filteredMatches)
 
-  // ? Filtering matches to see if the current user & character ID are in the matches table. 
-  function filterMatches() {
-    console.log(matchesInfo)
-    const myMatches = matchesInfo.filter((match) => {
-      if (match.match_one_id === getUserId() || match.match_two_id === getUserId()) {
-        return myMatches
+  function filtering(data, characterId) {
+    const filter = {
+      match_one_id: getUserId(),
+      match_two_id: characterId
+    }
+    const filteredMatches = data.filter(function (item) {
+      for (var key in filter) {
+        if (item[key] === undefined || item[key] != filter[key])
+          return false
       }
-      // console.log(myMatches)
-
-
-
-
+      return true
     })
-    // console.log(myMatches)
-    // const result = myMatches.filter(match => {
-    //   return match.match_two_id === characterId
-    // })
-    // console.log(result)
+
+    if (filteredMatches.length === 0 ) {
+      return setIsOpen(false)
+    } else {
+      return setIsOpen(true)
+    }
   }
-
-
-  // console.log('its a match!' + result)
-  // handleMatch()
-
-
-  // function handleMatch(event) {
-  //   event.preventDefault()
-  //   setIsOpen(!isOpen)
-  //   console.log(isOpen)
-  // }
-
 
   const outOfFrame = (name) => {
     console.log(name + ' left the screen!')
@@ -123,7 +97,6 @@ function Swipe() {
 
     <div>
       <div className="buttonwrapper">
-        <button onClick={() => setIsOpen(true)}>Its a match</button>
         <Modal open={isOpen} onClose={() => setIsOpen(false)}>
           Congratulations! Its a match!
         </Modal>

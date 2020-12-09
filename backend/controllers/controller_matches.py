@@ -13,3 +13,5 @@ router = Blueprint(__name__, 'matches')
 def get_all_matches():
   matches = Matches.query.all()
   return matches_schema.jsonify(matches, many=True), 200
+
+
