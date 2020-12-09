@@ -16,7 +16,12 @@ with app.app_context():
         age=24,
         image="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mnx8d29tYW58ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60",
         postcode="SW1W 8TH",
-        bio="I love walks on the beach"
+        bio="I love walks on the beach",
+        quote="I am the best!",
+        religion="Christian",
+        relationship="Married",
+        children="No",
+        employment="Trade"
     )
 
     clyde = User(
@@ -26,7 +31,12 @@ with app.app_context():
         age=24,
         image="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mnx8d29tYW58ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60",
         postcode="SW1W 8TH",
-        bio="I love walks on the beach"
+        bio="Money is the way to my heart",
+        quote="",
+        religion="Jewish",
+        relationship="Married",
+        children="No",
+        employment="Armed Forces"
     )
 
     gatsby = User(
@@ -36,7 +46,12 @@ with app.app_context():
         age=24,
         image="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mnx8d29tYW58ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60",
         postcode="SW1W 8TH",
-        bio="I love walks on the beach"
+        bio="I prefer blondes",
+        quote="A little party never killed nobody...",
+        religion="Athiest",
+        relationship="Single",
+        children="No",
+        employment="Veteran"
     )
 
     daisy = User(
@@ -46,7 +61,12 @@ with app.app_context():
         age=24,
         image="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mnx8d29tYW58ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60",
         postcode="SW1W 8TH",
-        bio="I love walks on the beach"
+        bio="I love big parties",
+        quote="Theres no I in team",
+        religion="",
+        relationship="Divorced",
+        children="No",
+        employment="Unemployed"
     )
 
     bonnie.save()

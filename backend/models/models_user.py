@@ -4,8 +4,6 @@ from sqlalchemy.ext.hybrid import hybrid_property
 from datetime import *
 import jwt
 from environment.config import secret
-# from models.models_bookshelf import Bookshelf
-# from models.models_user_bookshelf import user_bookshelf_join
 
 class User(db.Model, BaseModel):
 
@@ -15,9 +13,14 @@ class User(db.Model, BaseModel):
   email = db.Column(db.String(128), nullable=False, unique=True)
   password_hash = db.Column(db.String(128), nullable=True)
   age = db.Column(db.Integer, nullable=False)
-  image = db.Column(db.Text, nullable=False)
+  image = db.Column(db.Text)
   postcode = db.Column(db.Text, nullable=False)
-  bio = db.Column(db.Text, nullable=False)
+  bio = db.Column(db.String(180), nullable=False)
+  quote = db.Column(db.String(350))
+  religion = db.Column(db.Text)
+  relationship = db.Column(db.Text)
+  children = db.Column(db.Text)
+  employment = db.Column(db.Text)
 
   # * --- PASSWORD STUFF
   @hybrid_property
@@ -32,9 +35,6 @@ class User(db.Model, BaseModel):
   def validate_password(self, password_plaintext):
     # ? Use bcrypt to check the pw
     return bcrypt.check_password_hash(self.password_hash, password_plaintext)
-
-
-
 
 # * --- TOKEN
   def generate_token(self):

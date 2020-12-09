@@ -23,6 +23,7 @@ def signup():
   user.save()
   return user_schema.jsonify(user), 200
 
+
 # ? Logging in a user
 @router.route('/login', methods=['POST'])
 def login():
@@ -90,3 +91,19 @@ def get_all_users():
   users = User.query.all()
   return user_schema.jsonify(users, many=True), 200
 
+# ? PUTing user data
+@router.route('/users/<int:id>', methods=['PUT'])
+@secure_route
+def update_user(id):
+  current_user = User.query.get(id)
+
+  try:
+    user = user_schema.load(
+      request.get_json(),
+      instance=current_user,
+      partial=True
+    )
+  except ValidationError as e:
+    return { 'errors': e.messages, 'message': 'Something went wrong.'}
+  user.save()
+  return user_schema.jsonify(user), 200

@@ -1,45 +1,38 @@
 import React, { useState, useEffect } from 'react'
-import Toggle from 'react-toggle'
 import { useHistory } from "react-router-dom";
 import axios from 'axios'
 
 
 const Edit = (props) => {
   console.log(props)
-  const userId = props.computedMatch.params.userId
+  const userId = props.match.params.userId
   let history = useHistory()
   console.log(history)
+  
   const [image, setImage] = useState('')
 
   const [formData, updateFormData] = useState({
     email: '',
     password: '',
-    passwordConfirmation: '',
-    firstname: '',
-    lastname: '',
+    password_confirmation: '',
+    first_name: '',
     image: '',
     bio: '',
-    age: ''
+    age: '',
+    quote: '',
+    religion: '',
+    relationship: '',
+    children: '',
+    employment: ''
   })
   console.log(formData)
 
-  // useEffect(() => {
-  //   console.log(userId)
-  //   axios.get(`/api/profile/${userId}`, {
-  //     headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
-  //   })
-  //     .then(resp => {
-  //       updateFormData(resp.data)
-  //       console.log(resp.data)
-  //     })
-  // }, [])
-
   useEffect(() => {
-    axios.get(`/api/user/${userId}`, {
+    axios.get(`/api/users/${userId}`, {
       headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
     })
     .then(resp => {
-      updateUserData(resp.data)
+      updateFormData(resp.data)
       console.log(resp.data)
     })
   }, [])
@@ -55,7 +48,7 @@ const Edit = (props) => {
         if (result.event !== 'success') {
           return
         }
-        axios.put(`/api/user/${userId}`, { url: result.info.secure_url })
+        axios.put(`/api/users/${userId}`, { url: result.info.secure_url })
           .then((res) => setImage(res.data))
       }
     ).open()
@@ -87,15 +80,12 @@ const Edit = (props) => {
 
   function handleSubmit(event) {
     event.preventDefault()
-    axios.put(`/api/profile/editprofile/${userId}`, formData, {
-      headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
-    })
-    axios.put(`/api/user/edituser/${userId}`, userData, {
+    axios.put(`/api/users/${userId}`, formData, {
       headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
     })
       .then(resp => {
         console.log(resp.data)
-        history.push(`/profile/users/${userId}`)
+        history.push(`/profile/${userId}`)
       })
   }
 
@@ -124,29 +114,29 @@ const Edit = (props) => {
           <input
             className="editInput" 
             type="text"
-            onChange={handleUserChange}
-            value={formData.firstname}
-            name="firstname"
+            onChange={handleChange}
+            value={formData.first_name}
+            name="first_name"
           />
         </div>
-
+{/* 
         <div className="field">
           <label className="editLabel">Last Name</label>
           <input
             className="editInput" 
             type="text"
-            onChange={handleUserChange}
+            onChange={handleChange}
             value={formData.lastname}
             name="lastname"
           />
-        </div>
+        </div> */}
 
         <div className="field">
           <label className="editLabel">Email</label>
           <input
             className="editInput" 
             type="text"
-            onChange={handleUserChange}
+            onChange={handleChange}
             value={formData.email}
             name="email"
           />
@@ -156,7 +146,7 @@ const Edit = (props) => {
           <label className="editLabel">Password</label>
           <input className="editInput"
             type="password"
-            onChange={handleUserChange}
+            onChange={handleChange}
             value={formData.password}
           />
         </div >
@@ -165,9 +155,9 @@ const Edit = (props) => {
           <label className="editLabel">Password Confirmation</label>
           <input className="editInput"
             type="password"
-            onChange={handleUserChange}
+            onChange={handleChange}
             value={formData.passwordConfirmation}
-            name="passwordConfirmation"
+            name="password_confirmation"
           />
         </div >
         <div className="field">
@@ -179,6 +169,51 @@ const Edit = (props) => {
             name="bio"
           />
         </div>
+        <div className="field">
+          <label className="editLabel">Your Quote</label>
+          <input className="editInput" 
+            type="text"
+            onChange={handleChange}
+            value={formData.quote}
+            name="quote"
+          />
+        </div>
+        <div className="field">
+          <label className="editLabel">Your Religion</label>
+          <input className="editInput" 
+            type="text"
+            onChange={handleChange}
+            value={formData.religion}
+            name="religion"
+          />
+        </div>
+        <div className="field">
+          <label className="editLabel">Your Relationship Status</label>
+          <input className="editInput" 
+            type="text"
+            onChange={handleChange}
+            value={formData.relationship}
+            name="relationship"
+          />
+        </div>
+        {/* <div className="field">
+          <label className="editLabel">Do you have children?</label>
+          <input className="editInput" 
+            type="text"
+            onChange={handleChange}
+            value={formData.children}
+            name="children"
+          />
+        </div>
+        <div className="field">
+          <label className="editLabel">Your Employment Status</label>
+          <input className="editInput" 
+            type="text"
+            onChange={handleChange}
+            value={formData.employment}
+            name="employment"
+          />
+        </div> */}
         <button className="button" type="submit" onClick={handleSubmit}>Save Changes</button>
       </form>
     </main>

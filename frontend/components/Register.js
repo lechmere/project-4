@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
-// import axios from 'axios'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import logo from '../images/white-logo.svg'
+import axios from 'axios'
+
 
 const Register = () => {
 
@@ -28,14 +29,14 @@ const Register = () => {
     updateFormData(data)
   }
 
-  // function handleSubmit(event) {
-  //   event.preventDefault()
+  function handleSubmit(event) {
+    event.preventDefault()
 
-  //   axios.post('api/register', formData)
-  //     .then(resp => {
-  //       props.history.push('/')
-  //     })
-  // }
+    axios.post('api/signup', formData)
+      .then(resp => {
+        props.history.push('/')
+      })
+  }
 
   return <main className="bg-color">
     <section className="login-logo">
@@ -50,7 +51,7 @@ const Register = () => {
           type="text"
           onChange={handleChange}
           value={formData.first_name}
-          name="firstname"
+          name="first_name"
           placeholder="First Name"
         />
       </div>
@@ -82,7 +83,7 @@ const Register = () => {
           type="password"
           onChange={handleChange}
           value={formData.password_confirmation}
-          name="passwordConfirmation"
+          name="password_confirmation"
           placeholder="Password Confirmation"
         />
       </div >
@@ -130,7 +131,7 @@ const Register = () => {
           placeholder="Bio"
         />
       </div>
-      <button className="form-button" type="submit" >Sign Up</button>
+      <button className="form-button" type="submit" onClick={handleSubmit}>Sign Up</button>
 
 <a className="alt-page" href="/login">Have an Account? Login</a>
 
