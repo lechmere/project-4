@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 // import axios from 'axios'
 import { Link } from 'react-router-dom'
-import NavBar from './NavBar'
-import Banner from './Banner'
 
 const Register = (props) => {
 
@@ -41,7 +39,6 @@ const Register = (props) => {
   // }
 
   return <>
-  <Banner />
   <div className="session">
     <div className="left">
     </div>
