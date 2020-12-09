@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export default function Modal({ open, children, onClose }) {
   if (!open) return null
@@ -7,7 +8,7 @@ export default function Modal({ open, children, onClose }) {
       <div className="overlay" />
       <div className="modal">
         {children}
-        <button onClick={onClose}>chat</button>
+        <Link to={'/message-home'} onClick={onClose}>Go to messages</Link>
         <a onClick={onClose}>Keep Swiping</a>
       </div>
     </>
