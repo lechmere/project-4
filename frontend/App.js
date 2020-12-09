@@ -8,7 +8,6 @@ import Login from './components/Login'
 import Register from './components/Register'
 import Settings from './components/Settings'
 import Swipe from './components/Swipe'
-import Menu from './components/Menu'
 import MessageHome from './components/MessageHome'
 import Message from './components/Message'
 import Profile from './components/Profile'
@@ -19,7 +18,6 @@ import Profile from './components/Profile'
 const App = () => {
 
   return <BrowserRouter>
-    <Menu />
     <Switch>
       <Route exact path="/" component={Home} />
       <Route exact path="/login" component={Login} />
@@ -29,6 +27,7 @@ const App = () => {
       <Route exact path="/message-home" component={MessageHome} />
       <Route exact path="/message" component={Message} />
       <Route exact path="/profile/:userId" component={Profile} />
+      <Route exact path="/message/:id" component={Message} />
     </Switch>
   </BrowserRouter>
 }

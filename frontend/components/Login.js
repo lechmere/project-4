@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-
+import logo from '../images/white-logo.svg'
 
 // * Standard Login Form (Pre populate?)
 // * Once logged in -> Link to Home
@@ -39,45 +39,40 @@ const Login = (props) => {
       })
   }
 
-  return <>
-  <main>
-    <section className="cover">
-      <h1>Login</h1>
+  return <main className="bg-color">
+    <section className="login-logo">
+      <img src={logo} alt={'distance-arrow'} />
     </section>
 
-    <section className="content" id="register">
-      <section className="margin">
-        <form onSubmit={handleSubmit}>
-          <div className="form-section">
-            <label className="label"><h5>Email</h5></label>
-            <input className="input"
-              type="text"
-              placeholder="Type Here"
-              onChange={handleChange}
-              value={formData.email}
-              name="email"
-            />
-          </div>
-          <div className="form-section">
-            <label className="label"><h5>Password</h5></label>
-            <input className="input"
-              type="password"
-              placeholder="Type Here"
-              onChange={handleChange}
-              value={formData.password}
-              name="password"
-            />
-          </div>
-          {errors && <p className="errorMessages" style={{ color: 'red' }}>
-            {'Invalid username or password'}
-          </p>}
-          <a href="/" onClick={handleSubmit} className="button-green"><button className="button-green">LOGIN</button></a>
-        </form>
-      </section>
+    <section>
+      <form onSubmit={handleSubmit}>
+        <div className="form-section">
+          <input className="input-field"
+            type="text"
+            placeholder="Email"
+            onChange={handleChange}
+            value={formData.email}
+            name="email"
+          />
+        </div>
+        <div className="form-section">
+          <input className="input-field"
+            type="password"
+            placeholder="Password"
+            onChange={handleChange}
+            value={formData.password}
+            name="password"
+          />
+        </div>
+        {errors && <p className="errorMessages" style={{ color: 'red' }}>
+          {'Invalid username or password'}
+        </p>}
+        <a href="/" onClick={handleSubmit}><button className="form-button">LOGIN</button></a>
+        <a className="alt-page" href="/register">No account? Register</a>
+      </form>
     </section>
 
   </main>
-  </>
 }
 
 export default Login
