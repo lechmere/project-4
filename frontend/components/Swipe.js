@@ -6,6 +6,7 @@ import distance from '../images/distance-marker.svg'
 import decline from '../images/error-circle.svg'
 import accept from '../images/heart-circle.svg'
 import Modal from './modal/Modal'
+import { getUserId } from '../lib/auth'
 
 
 function Swipe() {
