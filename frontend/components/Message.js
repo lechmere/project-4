@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { getUserId } from '../lib/auth'
+import backarrow from '../images/back-arrow.svg'
+import send from '../images/send.svg'
+import Menu from '../components/Menu'
 
 function Message(props) {
   const token = localStorage.getItem('token')
@@ -8,6 +11,7 @@ function Message(props) {
   const [allMessages, updateAllMessages] = useState([])
   const [currentUserCheck, updateCurrentUserCheck] = useState([])
   const [text, setText] = useState('')
+  const [toUser, updateToUser] = useState([])
 
   // // Message content form
   const [userMessage, updateUserMessage] = useState({
@@ -18,13 +22,13 @@ function Message(props) {
   // // Handle information needed to POST the message
   function handleChange(event) {
     const name = event.target.name
-    const value = event.target.event
+    const value = event.target.value
     const data = {
       ...userMessage,
       [name]: value
     }
     updateUserMessage(data)
-    handleSubmit()
+
   }
 
   useEffect(() => {
@@ -32,8 +36,19 @@ function Message(props) {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(resp => {
-        console.log(resp.data)
         updateAllMessages(resp.data)
+      })
+      .catch(err => console.log(err))
+  }, [])
+
+
+  useEffect(() => {
+    axios.get(`/api/users/${toId}`, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+      .then(resp => {
+        updateToUser(resp.data)
+        console.log(resp.data)
       })
       .catch(err => console.log(err))
   }, [])
@@ -63,11 +78,9 @@ function Message(props) {
     }
     return true
   })
-  console.log(tofilterMessage)
 
   // Merging the filtered messages together. 
   const mergedMessages = [...filteredMessage, ...tofilterMessage]
-  console.log(mergedMessages)
 
 
   // Sorting messages by time - newest message to appear at the bottom.
@@ -77,7 +90,6 @@ function Message(props) {
   })
 
 
-  console.log(sortMessages)
 
   // Function POST message data to API
   function handleSubmit(event) {
@@ -92,43 +104,52 @@ function Message(props) {
       })
   }
 
-  return <div>
-    <h1 className="testing">MESSAGES!!</h1>
-    {sortMessages.map((fromMessage, index) => {
-      return <div className="fromMessage" key={index}>
-        <p >{fromMessage.from_user.first_name}</p>
-        <p>{fromMessage.content}</p>
-      </div>
-    })}
-
-    <form onSubmit={handleSubmit}>
-      <div className="media-content">
-        <div className="field">
-          <p className="control">
-            <textarea
-              className="textarea"
-              placeholder="Send message"
-              onChange={handleChange}
-              value={userMessage.content}
-              name="context"
-            >
-              {text}
-            </textarea>
-          </p>
+  return <section className="bg-color">
+    <section className="page-container">
+      <section className="page-content">
+        <div className="overflow-fade">
         </div>
-        <div className="field">
-          <p className="control">
-            <button>
-              send
-            </button>
-          </p>
+        <div className="page-cover">
+          <img src={backarrow} alt={'back-arrow'} />
+          <img className="profile-image" src={toUser.image} alt={'user-profile-image'} />
+          <div className="message-cover">
+            <h1>{toUser.first_name}, {toUser.age}</h1>
+            <h3>{toUser.bio}</h3>
+          </div>
         </div>
-      </div>
-    </form>
 
+        <hr></hr>
 
-  </div>
+        <div className="dm-inner-scroll">
+          {sortMessages.map((fromMessage, index) => {
+            return <div className="message-content" key={index}>
+              <h2>{fromMessage.content}</h2>
+              <h3>{fromMessage.from_user.first_name}</h3>
+            </div>
+          })}
 
+        </div>
+
+        <form onSubmit={handleSubmit}>
+
+          <textarea
+            className="message-field"
+            placeholder="Type your message..."
+            onChange={handleChange}
+            value={userMessage.content}
+            name="content"
+          >
+            {text}
+          </textarea>
+
+          <button className="dm-button">
+            <img src={send} alt={'send-icon'} />
+          </button>
+        </form>
+      </section>
+    </section>
+    < Menu />
+  </section>
 }
 
 export default Message

@@ -79,18 +79,36 @@ with app.app_context():
       liked_id=3  
     )
 
+    like6 = Likes(
+      liker_id=3,
+      liked_id=2  
+    )
+
+    like7 = Likes(
+      liker_id=2,
+      liked_id=3  
+    )
+
     like1.save()
     like2.save()
     like3.save()
     like4.save()
     like5.save()
+    like6.save()
+    like7.save()
 
     match1 = Matches(
         match_one_id=3,
         match_two_id=4,
     )
 
+    match2 = Matches(
+        match_one_id=3,
+        match_two_id=2,
+    )
+
     match1.save()
+    match2.save()
     
     print('Users created')
 
