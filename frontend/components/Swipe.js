@@ -22,6 +22,8 @@ function Swipe() {
   const [matchesInfo, updateMatchesInfo] = useState([])
   const [characterId, updateCharacterId] = useState(Number)
   const [isOpen, setIsOpen] = useState(false)
+  const [testing, updateTesting] = useState([])
+  const [finalMatch, updateFinalMatch] = useState([])
 
   useEffect(() => {
     checkNewMatches()
@@ -42,6 +44,8 @@ function Swipe() {
 
 
   // ? SWIPE matches check
+
+
   async function checkNewMatches() {
     console.log('Checking...')
     await axios.get('/api/matches', {
@@ -49,17 +53,79 @@ function Swipe() {
     })
       .then(resp => {
         updateMatchesInfo(resp.data)
-        // filterMatches(resp.data)
+        filterMatches(resp.data)
         console.log(resp.data)
       })
       .catch(err => console.log(err))
+
   }
   // ? ----
 
 
 
+
+  function filterMatches(matchesData) {
+    const myMatches = matchesData.filter((match) => {
+      return match.match_one_id === getUserId()
+    })
+    console.log(myMatches)
+    updateTesting(myMatches)
+    // filterLastMatch()
+    return myMatches
+  //   const checkFilter = myMatches.filter((match) => {
+  //     return match.match_two_id === characterId
+  //   })
+  //   console.log(checkFilter)
+  //   return checkFilter
+  }
+
+  console.log(characterId)
+
+  // function filterLastMatch() {
+  //   const last = testing.filter((match) => {
+  //     return match.match_two_id !== characterId
+  //   })
+  //   console.log(last)
+  //   return last
+  // }
+
+
+
+
+
+
+  // const myMatches = matchesInfo.filter((match) => {
+  //   match.match_one_id === getUserId() || match.match_two_id === getUserId()
+  //   return myMatches
+  // })
+  // console.log(myMatches)
+
+  // const filteredMatches = filterMatches()
+  // console.log(filteredMatches)
+
+  // ? Filtering matches to see if the current user & character ID are in the matches table. 
+
+  // console.log(myMatches)
+
+  // const myMatches = matchesInfo.filter((match) => {
+  //   if (match.match_one_id === getUserId() || match.match_two_id === getUserId()) {
+  //     return myMatches
+  //   }
+  // })
+  // console.log(myMatches)
+  // const result = myMatches.filter(match => {
+  //   return match.match_two_id === characterId
+  // })
+  // console.log(result)
+
+
+
+
+
+
+
   // ? Moving Deck
-  const swiped = (direction, nameToDelete, characterId) => {
+  async function swiped(direction, nameToDelete, characterId) {
     console.log('removing: ' + nameToDelete)
     setLastDirection(direction)
     updateCharacterId(characterId)
@@ -68,39 +134,17 @@ function Swipe() {
     if (direction === 'right') {
       console.log('Moved Right')
 
-      axios.post('/api/likes', { liked_id: characterId }, {
+      await axios.post('/api/likes', { liked_id: characterId }, {
         headers: { Authorization: `Bearer ${token}` }
       })
         .then(
           checkNewMatches(),
-          filteredMatches
-          // filterMatches()
+          checkNewMatches()
         )
     }
   }
 
-  const filteredMatches = filterMatches()
-  console.log(filteredMatches)
-  
-  // ? Filtering matches to see if the current user & character ID are in the matches table. 
-  function filterMatches() {
-    console.log(matchesInfo)
-    const myMatches = matchesInfo.filter((match) => {
-      if (match.match_one_id === getUserId() || match.match_two_id === getUserId()) {
-        return myMatches
-      }
-      // console.log(myMatches)
 
-
-
-
-    })
-    // console.log(myMatches)
-    // const result = myMatches.filter(match => {
-    //   return match.match_two_id === characterId
-    // })
-    // console.log(result)
-  }
 
 
   // console.log('its a match!' + result)
@@ -125,8 +169,8 @@ function Swipe() {
       <div className="buttonwrapper">
         <button onClick={() => setIsOpen(true)}>Its a match</button>
         <Modal open={isOpen} onClose={() => setIsOpen(false)}>
-          Congratulations! It's a match! 
-      </Modal>
+          Congratulations! Its a match!
+        </Modal>
       </div>
       <div className='cardContainer'>
         {characters.map((character) =>

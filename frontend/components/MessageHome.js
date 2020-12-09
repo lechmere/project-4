@@ -24,30 +24,37 @@ function MessageHome() {
 
   // ? Filtering by conversations the user started 
   const iStarted = allMatches.filter((message) => {
-    return message.from_user_id === getUserId()
+    return message.match_one_id === getUserId()
   })
   console.log(iStarted)
 
+  const newSorted = iStarted.map((item) => {
+    return [item.match_two_id, item]
+  })
+  const mapSorted = new Map(newSorted)
+  const results = [...mapSorted.values()]
+
+  console.log(results)
 
   // ? Filtering by conversations the match started 
-  const theyStarted = allMatches.filter((message) => {
-    return message.to_user_id === getUserId()
-  })
-  console.log(theyStarted)
+  // const theyStarted = allMatches.filter((message) => {
+  //   return message.match_two_id === getUserId()
+  // })
+  // console.log(theyStarted)
 
 
   return <div>
     <h1 className="testing">MESSAGE HOME</h1>
-    {/* {iStarted.map((messageTitle, index) => {
-      return <Link key={index} to={'/message'}>
-        <h2 className="testing">{messageTitle.to_user.first_name} </h2>
+    {results.map((messageTitle, index) => {
+      return <Link key={index} to={`/message/${messageTitle.match_two_id}`}>
+        <h2 className="testing">{messageTitle.match_two.first_name} </h2>
       </Link>
 
 
 
     })}
 
-    {theyStarted.map((messageTitle, index) => {
+    {/* {theyStarted.map((messageTitle, index) => {
       return <Link key={index} to={'/message'}>
         <h2 className="testing">{messageTitle.to_user.first_name} </h2>
       </Link>

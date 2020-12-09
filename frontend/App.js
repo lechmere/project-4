@@ -28,7 +28,7 @@ const App = () => {
       {/* <Route exact path="/profile/:userId/" componenet={Profile} /> */}
       <Route exact path="/swipe" component={Swipe} />
       <Route exact path="/message-home" component={MessageHome} />
-      <Route exact path="/message" component={Message} />
+      <Route exact path="/message/:id" component={Message} />
     </Switch>
     <Menu />
   </BrowserRouter>
