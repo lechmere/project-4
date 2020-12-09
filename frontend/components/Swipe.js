@@ -125,7 +125,8 @@ function Swipe() {
       <div className="buttonwrapper">
         <button onClick={() => setIsOpen(true)}>Its a match</button>
         <Modal open={isOpen} onClose={() => setIsOpen(false)}>
-          Congratulations! Its a match!
+          <h2>Its a match!</h2>
+          <h3>Go shake your tail feathers</h3>
         </Modal>
       </div>
       <div className='cardContainer'>
@@ -163,7 +164,7 @@ function Swipe() {
       } */}
     </div>
   </div>
-
+  
 
 
 }

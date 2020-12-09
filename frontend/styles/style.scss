@@ -1,37 +1,79 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap');
 
-// ***** || GLOBAL VARIABLES 
 
+
+// ***** || GLOBAL VARIABLES 
 $monts: "Montserrat",
 sans-serif;
 $main-gradient: linear-gradient(180deg, #f3727d 0%, #f69e83 100%);
 $blue : #575CB3;
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 .bg-color {
   background-image: url("../images/BG.svg");
   background-color: #cccccc;
   background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
+
+.page-container {
+  background: #FFFFFF;
+  border-radius: 15px;
+  min-width: 327px;
+  max-width: 327px;
+  margin: 24px;
+  height: 520px;
+}
+
+.page-content {
+  padding: 24px
+}
+
+.page-cover {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.page-inner-scroll {
+  max-height: 400px;
+  overflow: scroll;
+}
+
+
 
 a,
 u {
   text-decoration: none;
 }
 
+
+
+// ----------
+
+
+
 // ***** || GLOBAL FONTS
 
 h1 {
-  font-family: "Damion", cursive;
-  color: #fff;
-  text-shadow: 0px 0px 60px 0px rgba(0, 0, 0, 0.3);
+  font-family: $monts;
+  font-size: 16px;
   margin: 0px;
 }
 
 h2 {
   font-family: $monts;
   font-size: 16px;
-  color: white;
   margin: 0px;
+  font-weight: 600px
 }
 
 h3 {
@@ -53,21 +95,11 @@ main {
 }
 
 
+// ----------
 
 
-
-.modal {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #FFF;
-  padding: 50px;
-  z-index: 1000;
-}
 
 // ***** || GLOBAL PAGES - IMPORT TINDER SWIPE
-
 body {
   margin: 0px;
 }
@@ -107,11 +139,11 @@ body {
 
 
 
+// ----------
 
 
 
 // ***** || SWIPE PAGE 
-
 .cardContainer {
   min-width: 327px;
   height: 343px;
@@ -172,6 +204,7 @@ body {
   h2 {
     margin-left: 24px;
     margin-bottom: 8px;
+    color: white;
   }
 
   h3 {
@@ -238,8 +271,6 @@ body {
 
 
 
-
-
 .buttons button:hover {
   transform: scale(1.05);
 }
@@ -276,6 +307,8 @@ body {
 
 
 
+// ----------
+
 
 
 // ***** || MENU
@@ -287,7 +320,7 @@ nav {
   box-shadow: 0 2px 25px 0 rgba(50, 53, 110, 0.10);
   border-radius: 20px;
   width: 100%;
-  max-width: 300px;
+  max-width: 327px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -312,12 +345,9 @@ nav {
   display: inline;
 }
 
-.testing {
-  color: black
-}
 
 
-
+// ----------
 
 
 
@@ -393,7 +423,11 @@ form {
 
 
 
+// ----------
 
+
+
+// **** || MODAL & OVERLAY
 .modal {
   position: fixed;
   top: 50%;
@@ -462,10 +496,176 @@ form {
 
 
 
-.fromMessage {
-  background-color: #f3727d;
+// ----------
+
+
+
+// **** || MESSAGE HOME
+.message-cover {
+  margin-left: 16px;
+
+  h1 {
+    font-size: 16px;
+    color: #575CB3;
+    letter-spacing: 0;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  h3 {
+    font-size: 13px;
+    color: rgba(153, 158, 255, 0.75);
+    letter-spacing: 0;
+    font-weight: 500;
+  }
 }
 
-.toMessage{
-  background-color: #f69e83;
+hr {
+
+  border: 1px #F0F0F0 solid;
+  margin-bottom: 24px;
+  margin-top: 24px;
+
+
+}
+
+.message-list {
+
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 40px;
+
+  img {
+    height: 64px;
+    width: 64px;
+    border-radius: 100%;
+    object-fit: cover;
+  }
+}
+
+.message-user {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  justify-content: center;
+  align-items: flex-start;
+
+  h2 {
+    font-size: 16px;
+    color: #575757;
+    letter-spacing: 0;
+    margin-left: 16px;
+  }
+
+  h3 {
+    font-size: 13px;
+    color: #BFBFBF;
+    letter-spacing: 0;
+    font-weight: 500;
+    margin-left: 16px;
+
+  }
+}
+
+
+// ----------
+
+
+// **** || MESSAGE LIST
+.profile-image {
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+  object-fit: cover;
+  margin-left: 8px;
+}
+
+
+.message-content {
+
+  background: #EDEEFF;
+  border-radius: 20px;
+
+  h2 {
+    font-weight: 500;
+    font-size: 15px;
+    color: #7D83FF;
+    letter-spacing: 0;
+    padding-top: 16px;
+    margin: 16px 16px 0px 16px
+  }
+
+  h3 {
+    font-weight: 500;
+    font-size: 12px;
+    color: #575CB3;
+    letter-spacing: 0;
+    padding-bottom: 16px;
+    margin: 8px 0px 16px 16px
+  }
+}
+
+
+.message-field {
+  background-color: #F5F5FF;
+  border-radius: 25px;
+  border: none;
+  width: 272px;
+  height: 35px;
+  font-family: $monts;
+  font-weight: 400;
+  font-size: 14px;
+  color: #575CB3;
+  letter-spacing: 0;
+  padding: 14px 0px 0px 16px;
+
+}
+
+.message-field::placeholder,
+.message-field:focus {
+  font-family: $monts;
+  font-weight: 400;
+  font-size: 14px;
+  color: #575CB3;
+  letter-spacing: 0;
+  outline: none;
+}
+
+.dm-button {
+  position: absolute;
+  margin-top: 8px;
+  margin-left: 120px;
+  background-image: linear-gradient(180deg, #F3727D 0%, #F69E83 100%);
+  border: none;
+  border-radius: 100%;
+  height: 34px;
+  width: 34px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    height: 15px;
+    width: 15px;
+    margin-left: 4px;
+  }
+}
+
+textarea {
+  resize: none;
+}
+
+.dm-inner-scroll {
+  max-height: 320px;
+  margin-bottom: 14px;
+  overflow: scroll;
+}
+
+.overflow-fade {
+  height: 50px;
+  width: 279px;
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 100%);
+  position: absolute;
+  margin-top: 365px;
 }
