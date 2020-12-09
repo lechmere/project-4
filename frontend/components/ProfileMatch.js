@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { getUserId } from '../lib/auth'
 import Modal from './modal/Modal'
-import NavBar from './NavBar'
-import Banner from './Banner'
 // import { PopUp } from './components/modal/PopUp';
 
 const ProfileMatch = (props) => {
@@ -139,7 +137,6 @@ const ProfileMatch = (props) => {
 
 
   </main>
-  <NavBar />
   </>
 }
 

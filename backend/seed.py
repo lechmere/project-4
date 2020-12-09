@@ -9,9 +9,7 @@ with app.app_context():
     db.create_all()
 
     bonnie = User(
-        username="bonnie",
         first_name="Bonnie",
-        last_name="Smith",
         email="bonnie@bonnie.com",
         password="bonnie",
         age=24,
@@ -21,9 +19,7 @@ with app.app_context():
     )
 
     clyde = User(
-        username="clyde",
         first_name="Clyde",
-        last_name="Smith",
         email="clyde@clyde.com",
         password="clyde",
         age=24,
@@ -33,9 +29,7 @@ with app.app_context():
     )
 
     gatsby = User(
-        username="gatsby",
         first_name="Gatsby",
-        last_name="Smith",
         email="gatsby@gatsby.com",
         password="gatsby",
         age=24,
@@ -45,9 +39,7 @@ with app.app_context():
     )
 
     daisy = User(
-        username="daisy",
         first_name="Daisy",
-        last_name="Smith",
         email="daisy@daisy.com",
         password="daisy",
         age=24,

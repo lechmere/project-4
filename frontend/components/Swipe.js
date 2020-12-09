@@ -4,7 +4,7 @@ import axios from 'axios'
 import { getUserId } from '../lib/auth'
 // import logo from '../images/logo.svg'
 import logo from '../images/logo.svg'
-
+import Menu from '../components/Menu'
 
 import distance from '../images/distance-marker.svg'
 import decline from '../images/error-circle.svg'
@@ -81,7 +81,7 @@ function Swipe() {
 
   const filteredMatches = filterMatches()
   console.log(filteredMatches)
-  
+
   // ? Filtering matches to see if the current user & character ID are in the matches table. 
   function filterMatches() {
     console.log(matchesInfo)
@@ -125,8 +125,9 @@ function Swipe() {
       <div className="buttonwrapper">
         <button onClick={() => setIsOpen(true)}>Its a match</button>
         <Modal open={isOpen} onClose={() => setIsOpen(false)}>
-          Congratulations! It's a match! 
-      </Modal>
+          <h2>Its a match!</h2>
+          <h3>Go shake your tail feathers</h3>
+        </Modal>
       </div>
       <div className='cardContainer'>
         {characters.map((character) =>
@@ -162,6 +163,7 @@ function Swipe() {
         <h1>NOT A MATCH!!</h1>
       } */}
     </div>
+    < Menu />
   </div>
 
 
