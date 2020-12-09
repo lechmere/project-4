@@ -1,13 +1,14 @@
-import React from 'react';
+import React from 'react'
 
 export default function Modal({ open, children, onClose }) {
-  if(!open) return null
+  if (!open) return null
   return (
     <>
       <div className="overlay" />
       <div className="modal">
-        <button onClick={onClose}>Close Modal</button>
-      {children}
+        {children}
+        <button onClick={onClose}>chat</button>
+        <a onClick={onClose}>Keep Swiping</a>
       </div>
     </>
   )

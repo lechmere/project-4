@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap');
 
 // ***** || GLOBAL VARIABLES 
 
@@ -7,9 +7,16 @@ sans-serif;
 $main-gradient: linear-gradient(180deg, #f3727d 0%, #f69e83 100%);
 $blue : #575CB3;
 
+.bg-color {
+  background-image: url("../images/BG.svg");
+  background-color: #cccccc;
+  background-size: cover;
+}
 
-
-
+a,
+u {
+  text-decoration: none;
+}
 
 // ***** || GLOBAL FONTS
 
@@ -36,15 +43,16 @@ h3 {
 
 
 main {
-  height: calc(100vh - 210px);
+  height: 100vh;
   width: 100vw;
   background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.bg-color {
-  background-image: url("../images/BG.svg");
-  background-color: #cccccc;
-}
+
 
 
 
@@ -271,17 +279,12 @@ body {
 
 
 // ***** || MENU
-.tinder-text {
-  text-align: center;
-}
-
-// ? MENU
 
 nav {
 
   height: 56px;
   background-image: linear-gradient(180deg, #F0F0FF 0%, #CCCEFF 100%);
-  box-shadow: 0 2px 25px 0 rgba(50,53,110,0.10);
+  box-shadow: 0 2px 25px 0 rgba(50, 53, 110, 0.10);
   border-radius: 20px;
   width: 100%;
   max-width: 300px;
@@ -300,12 +303,6 @@ nav {
   }
 }
 
-
-
-
-.testing {
-  color: black
-}
 .nav-icon:hover .icon-passive,
 .nav-icon .icon-active {
   display: none;
@@ -315,31 +312,138 @@ nav {
   display: inline;
 }
 
-
-
-
-// ************** Profile Match **************
-
-.buttonwrapper {
-  position: relative;
-  z-index: 1;
+.testing {
+  color: black
 }
 
-.othercontent {
-  position: relative;
-  z-index: 2;
-  background-color: red;
-  padding: 10px;
+
+
+
+
+
+// **** || LOGIN & REGISTER
+.input-field {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 15px;
+  min-width: 327px;
+  height: 51px;
+  border: none;
 }
+
+.input-field::placeholder,
+input:focus,
+input {
+  font-family: $monts;
+  color: white;
+  text-align: center;
+  font-weight: 600;
+  font-size: 16px;
+  opacity: 1;
+  letter-spacing: 0.05em;
+  outline: none
+}
+
+.form-section {
+  margin: 20px 0px 20px 0px;
+}
+
+.form-section-register {
+  margin: 10px 0px 10px 0px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  button {
+    margin-top: 20px;
+  }
+
+  a {
+    height: 20px;
+    margin-top: 20px;
+    height: min-content;
+    margin-top: 40px;
+    color: white;
+    font-family: $monts;
+    font-size: 16px;
+    font-weight: 400px;
+  }
+
+  .alt-page {
+    height: 20px
+  }
+}
+
+.form-button {
+  border: none;
+  width: 100px;
+  height: 40px;
+  border: 1px solid #FFFFFF;
+  border-radius: 10px;
+  background: transparent;
+  color: white;
+  font-size: 16px;
+  font-family: $monts;
+  font-weight: 500;
+  font-style: italic;
+  padding-top: 2px;
+}
+
+
+
 
 .modal {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
   background-color: #FFF;
   padding: 50px;
-  z-index: 1000;
+
+  h2 {
+    color: $blue;
+    font-size: 18px;
+  }
+
+  h3 {
+    font-weight: 500;
+    color: rgba(153, 158, 255, 0.8);
+    margin-top: 8px;
+    text-align: center;
+    font-size: 16px;
+  }
+
+  button {
+    background-image: linear-gradient(135deg, rgba(243, 114, 125, 0.80) 0%, rgba(246, 158, 131, 0.80) 100%);
+    border-radius: 10px;
+    border: none;
+    height: 46px;
+    width: 112px;
+    color: white;
+    font-size: 16px;
+    font-family: $monts;
+    font-weight: 500;
+    font-style: italic;
+    margin-top: 24px;
+    text-transform: uppercase;
+  }
+
+  a {
+    font-family: Montserrat-MediumItalic;
+    font-size: 13px;
+    color: #6B70E6;
+    letter-spacing: 0;
+    text-align: center;
+    margin-top: 24px;
+  }
 }
 
 .overlay {
@@ -348,8 +452,12 @@ nav {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, .7);
+
+  background-image: url("../images/BG.svg");
+  background-color: #f3727d;
+  background-size: cover;
   z-index: 1000;
+  opacity: 0.9;
 }
 
 
@@ -361,67 +469,3 @@ nav {
 .toMessage{
   background-color: #f69e83;
 }
-
-// // ************** Banner **************
-// .banner {
-//   height: 100px;
-//   width: 100vw;
-//   position: sticky;
-//   top: 0;
-//   background-color: white;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   border-bottom: 10px solid white;
-// }
-
-// .banner-title {
-//   font-family: 'Roboto', sans-serif;
-//   font-size: 60px;
-//   font-weight: bolder;
-//   text-align: center;
-//   background: -webkit-linear-gradient(#F3747D, #F59C82);
-//   -webkit-background-clip: text;
-//   -webkit-text-fill-color: transparent;
-// }
-
-// // ************** NavBar **************
-
-// .navbar {
-//   height: 70px;
-//   width: 100%;
-//   background-image: linear-gradient(#EFF0FF, #DCDEFF);
-//   display: flex;
-//   flex-direction: row;
-//   justify-content: space-evenly;
-//   align-items: center;
-//   position: sticky;
-//   bottom: 0;
-//   border-radius: 20px;
-// }
-
-// .navbar-link {
-//   text-align: center;
-//   width: 25%;
-// }
-
-// .navbar-match {
-//   height: 75px;
-//   width: 75px;
-//   // background: url('');
-//   // background-size: contain;
-// }
-
-// .navbar-profile {
-//   height: 75px;
-//   width: 75px;
-//   // background: url('');
-//   // background-size: contain;
-// }
-
-// .navbar-messages {
-//   height: 75px;
-//   width: 75px;
-//   // background: url('');
-//   // background-size: contain;
-// }

@@ -11,9 +11,7 @@ class User(db.Model, BaseModel):
 
   __tablename__ = 'users'
 
-  username = db.Column(db.String(15), nullable=False, unique=True)
   first_name = db.Column(db.String(15), nullable=False, unique=False)
-  last_name = db.Column(db.String(15), nullable=False, unique=False)
   email = db.Column(db.String(128), nullable=False, unique=True)
   password_hash = db.Column(db.String(128), nullable=True)
   age = db.Column(db.Integer, nullable=False)

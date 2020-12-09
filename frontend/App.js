@@ -9,7 +9,6 @@ import Register from './components/Register'
 import Settings from './components/Settings'
 import ProfileMatch from './components/ProfileMatch'
 import Swipe from './components/Swipe'
-import Menu from './components/Menu'
 import MessageHome from './components/MessageHome'
 import Message from './components/Message'
 
@@ -30,7 +29,6 @@ const App = () => {
       <Route exact path="/message-home" component={MessageHome} />
       <Route exact path="/message/:id" component={Message} />
     </Switch>
-    <Menu />
   </BrowserRouter>
 }
 
