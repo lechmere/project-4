@@ -1,2 +1,4 @@
-db_URI = 'postgres://localhost:5432/lovers_db'
-secret = 'You Complete Me <3'
+import os
+
+db_URI = os.getenv('DATABASE_URL', 'postgres://localhost:5432/<YOUR-DATABASE-NAME>')
+secret = os.getenv('SECRET', 'a suitable secret')

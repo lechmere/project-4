@@ -125,14 +125,15 @@ function Message(props) {
         <div className="overflow-fade">
         </div>
         <div className="page-cover">
+        <Link to ={'/message-home'}>
           <img src={backarrow} alt={'back-arrow'} />
+        </Link>
           <img className="profile-image" src={toUser.image} alt={'user-profile-image'} />
           <div className="message-cover">
             <h1>{toUser.first_name}, {toUser.age}</h1>
             <h3>{toUser.bio}</h3>
           </div>
         </div>
-
         <hr></hr>
 
         <div className="dm-inner-scroll">
