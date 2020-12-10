@@ -8,7 +8,7 @@ export default function Modal({ open, children, onClose }) {
       <div className="overlay" />
       <div className="modal">
         {children}
-        <Link to={'/message-home'} onClick={onClose}><button>Mssages</button></Link>
+        <Link to={'/message-home'} onClick={onClose}><button>Messages</button></Link>
         <a onClick={onClose}>Keep Swiping</a>
       </div>
     </>

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { getUserId } from '../lib/auth'
+import edit from '../images/edit.svg'
 
 const viewCurrentUser = (props) => {
 
@@ -24,12 +25,12 @@ const viewCurrentUser = (props) => {
       <section className="flex-container">
         <div className="display-area">
         <div className="profile">
-          <div>
-            <img className="img" src={viewCurrentUser.image} alt={viewCurrentUser.first_name} />
-          </div>
+        <div className="edit-cover">
+          <img className="profile-image" src={viewCurrentUser.image} alt={'user-profile-image'} />
+          <h1>{viewCurrentUser.first_name}, {viewCurrentUser.age}</h1>
+          <img className="edit-icon" src={edit} alt={'back-arrow'} />
+        </div>
           <div className="details">
-            <h2 className="name">{viewCurrentUser.first_name}</h2>
-            <h2 className="age">{viewCurrentUser.age}</h2>
             <h3 className="postcode">Location: </h3>
             <h3 className="postcode">{viewCurrentUser.postcode}</h3>
             <h3 className="bio">{viewCurrentUser.bio}</h3>

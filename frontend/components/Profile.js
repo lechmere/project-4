@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import edit from '../images/edit.svg'
-import Menu from '../components/Menu'
 
-const ViewProfile = (props) => {
-
-  const userId = props.match.params.userId
+const ViewProfile = ( {userId} ) => {
 
   const [viewProfile, updateViewProfile] = useState({})
 
@@ -26,7 +23,6 @@ const ViewProfile = (props) => {
         <div className="edit-cover">
           <img className="profile-image" src={viewProfile.image} alt={'user-profile-image'} />
           <h1>{viewProfile.first_name}, {viewProfile.age}</h1>
-          <img className="edit-icon" src={edit} alt={'back-arrow'} />
         </div>
 
         <hr></hr>
@@ -53,7 +49,6 @@ const ViewProfile = (props) => {
 
       </section>
     </section>
-    < Menu />
   </section>
 }
 export default ViewProfile

@@ -68,7 +68,7 @@ function Swipe() {
           checkNewMatches(characterId),
         )
     }
-    
+
   }
 
 
@@ -100,9 +100,8 @@ function Swipe() {
     }
   }
 
-  function tap(event) {
-    TinderCard.onClick
-      return setIsOpenTwo(true)
+  function tap(userId) {
+   setIsOpenTwo(userId)
   }
 
   const outOfFrame = (name) => {
@@ -121,34 +120,35 @@ function Swipe() {
       </div>
       <div className='cardContainer'>
         {characters.map((character) =>
-          <TinderCard className='swipe'
-            key={character.first_name}
-            onClick={tap()}
-            onSwipe={(dir) => swiped(dir, character.first_name, character.id)}
-            onCardLeftScreen={() => outOfFrame(character.first_name)}
-          >
-            <div style={{ backgroundImage: 'url(' + character.image + ')' }} className='card'>
-              <div className='card-distance'>
-                <img src={distance} alt={'distance-arrow'} />
-                <h3>2.2 Km away</h3>
+          <div key={character.first_name} onClick={() => tap(character.id)}>
+            <TinderCard className='swipe'
+              key={character.first_name}
+              onSwipe={(dir) => swiped(dir, character.first_name, character.id)}
+              onCardLeftScreen={() => outOfFrame(character.first_name)}
+            >
+              <div style={{ backgroundImage: 'url(' + character.image + ')' }} className='card'>
+                <div className='card-distance'>
+                  <img src={distance} alt={'distance-arrow'} />
+                  <h3>2.2 Km away</h3>
+                </div>
+                <div className='card-user'>
+                  <h2>{character.first_name}, {character.age}</h2>
+                  <h3>{character.bio}</h3>
+                </div>
               </div>
-              <div className='card-user'>
-                <h2>{character.first_name}, {character.age}</h2>
-                <h3>{character.bio}</h3>
-              </div>
-            </div>
-          </TinderCard>
-          )}
-           <div className="buttonwrapper">
-           <ModalTwo open={isOpenTwo} onClose={() => setIsOpenTwo(false)}>
-             <Profile />
-           </ModalTwo>
+            </TinderCard>
           </div>
+        )}
+        <div className="buttonwrapper">
+          <ModalTwo open={isOpenTwo} onClose={() => setIsOpenTwo(false)}>
+            <Profile userId={isOpenTwo} />
+          </ModalTwo>
+        </div>
         <br />
         <p className="tinder-text">Oh no! You have run out of swipes!</p>
       </div>
       <div className="button-group">
-        <button className="button-style"><img className="button-img" src={decline} onClick={() =>  clicked(characters[characters.length - 1], 'left')} alt={'decline'} /></button>
+        <button className="button-style"><img className="button-img" src={decline} onClick={() => clicked(characters[characters.length - 1], 'left')} alt={'decline'} /></button>
         <button className="button-style" id="button-style-right"><img className="button-img" id="accept" src={accept} onClick={() => clicked(characters[characters.length - 1], 'right')} alt={'accept'} /></button>
       </div>
       {lastDirection ? <h2 className='infoText'>You swiped {lastDirection}</h2> : <h2 className='infoText'> Get Swiping</h2>}
