@@ -25,7 +25,7 @@ function MessageHome() {
 
   // ? Filtering by conversations the user started 
   const iStarted = allMatches.filter((message) => {
-    return message.match_one_id === getUserId()
+    return message.match_one_id === getUserId() || message.match_two_id === getUserId()
   })
 
 
@@ -35,6 +35,7 @@ function MessageHome() {
   })
   const mapSorted = new Map(newSorted)
   const results = [...mapSorted.values()]
+
 
 
   // ? Filtering by conversations the match started 
@@ -58,15 +59,28 @@ function MessageHome() {
         <hr></hr>
         <div className="page-inner-scroll" id="dm-inner-scroll">
           {results.map((messageTitle, index) => {
-            return <Link key={index} to={`/message/${messageTitle.match_two_id}`}>
-              <div className="message-list">
-                <img src={messageTitle.match_two.image} alt={'user-profile-image'} />
-                <div className="message-user">
-                  <h2 className="testing">{messageTitle.match_two.first_name} </h2>
-                  <h3 className="testing">{messageTitle.match_two.bio} </h3>
+            if (messageTitle.match_two_id === getUserId()) {
+              return <Link key={index} to={`/message/${messageTitle.match_one_id}`}>
+                <div className="message-list">
+                  <img src={messageTitle.match_one.image} alt={'user-profile-image'} />
+                  <div className="message-user">
+                    <h2 className="testing">{messageTitle.match_one.first_name} </h2>
+                    <h3 className="testing">{messageTitle.match_one.bio} </h3>
+                  </div>
                 </div>
-              </div>
-            </Link>
+              </Link>
+            } else {
+              return <Link key={index} to={`/message/${messageTitle.match_two_id}`}>
+                <div className="message-list">
+                  <img src={messageTitle.match_two.image} alt={'user-profile-image'} />
+                  <div className="message-user">
+                    <h2 className="testing">{messageTitle.match_two.first_name} </h2>
+                    <h3 className="testing">{messageTitle.match_two.bio} </h3>
+                  </div>
+                </div>
+              </Link>
+            }
+
           })}
         </div>
 
