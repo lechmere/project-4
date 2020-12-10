@@ -163,9 +163,6 @@ with app.app_context():
     like2.save()
     like3.save()
     like4.save()
-    like5.save()
-    like6.save()
-    like7.save()
 
     match1 = Matches(
         match_one_id=3,
