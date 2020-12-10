@@ -6,8 +6,9 @@ import distance from '../images/distance-marker.svg'
 import decline from '../images/error-circle.svg'
 import accept from '../images/heart-circle.svg'
 import Modal from './modal/Modal'
+import ModalTwo from './modal/ModalTwo'
 import { getUserId } from '../lib/auth'
-
+import Profile from './Profile'
 
 function Swipe() {
   // const characters = db
@@ -19,6 +20,7 @@ function Swipe() {
   const [matchesInfo, updateMatchesInfo] = useState([])
   const [characterId, updateCharacterId] = useState(0)
   const [isOpen, setIsOpen] = useState(false)
+  const [isOpenTwo, setIsOpenTwo] = useState(false)
 
 
   // ? GET a list of all USERS to update CHARACTERS for CARDS
@@ -54,7 +56,7 @@ function Swipe() {
     console.log('removing: ' + nameToDelete)
     setLastDirection(direction)
     updateCharacterId(characterId)
-    console.log(characterId , "inside swiped")
+    console.log(characterId, "inside swiped")
     // ? IF right POST to LIKES table
     if (direction === 'right') {
       // console.log('Moved Right')
@@ -82,11 +84,16 @@ function Swipe() {
       return true
     })
 
-    if (filteredMatches.length === 0 ) {
+    if (filteredMatches.length === 0) {
       return setIsOpen(false)
     } else {
       return setIsOpen(true)
     }
+  }
+
+  function tap(event) {
+    TinderCard.onClick
+      return setIsOpenTwo(true)
   }
 
   const outOfFrame = (name) => {
@@ -107,6 +114,7 @@ function Swipe() {
         {characters.map((character) =>
           <TinderCard className='swipe'
             key={character.first_name}
+            onClick={tap()}
             onSwipe={(dir) => swiped(dir, character.first_name, character.id)}
             onCardLeftScreen={() => outOfFrame(character.first_name)}
           >
@@ -121,7 +129,12 @@ function Swipe() {
               </div>
             </div>
           </TinderCard>
-        )}
+          )}
+           <div className="buttonwrapper">
+           <ModalTwo open={isOpenTwo} onClose={() => setIsOpenTwo(false)}>
+             <Profile />
+           </ModalTwo>
+          </div>
         <br />
         <p className="tinder-text">Oh no! You have run out of swipes!</p>
       </div>
@@ -130,7 +143,6 @@ function Swipe() {
         <button className="button-style" id="button-style-right"><img className="button-img" id="accept" src={accept} alt={'accept'} /></button>
       </div>
       {lastDirection ? <h2 className='infoText'>You swiped {lastDirection}</h2> : <h2 className='infoText'> Get Swiping</h2>}
-
       {/* {itsAMatch === true ?
         <h1>ITS A MATCH!!!</h1>
         :
@@ -138,7 +150,7 @@ function Swipe() {
       } */}
     </div>
   </div>
-  
+
 
 
 }

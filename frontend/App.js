@@ -11,6 +11,7 @@ import Swipe from './components/Swipe'
 import MessageHome from './components/MessageHome'
 import Message from './components/Message'
 import Profile from './components/Profile'
+import MyProfile from './components/MyProfile'
 import EditProfile from './components/EditProfile'
 
 
@@ -30,6 +31,7 @@ const App = () => {
       <Route exact path="/profile/:userId" component={Profile} />
       <Route exact path="/message/:id" component={Message} />
       <Route exact path="/editprofile/:userId" component={EditProfile}/>
+      <Route exact path="/myprofile/:userId" component={MyProfile} />
     </Switch>
   </BrowserRouter>
 }
