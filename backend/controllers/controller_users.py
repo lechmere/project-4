@@ -74,7 +74,7 @@ def like():
 
   # ? GETing data for a single user
 @router.route('/users/<int:id>', methods=['GET'])
-@secure_route
+# @secure_route
 def get_single_user(id):
   single_user = User.query.get(id)
 

@@ -60,7 +60,7 @@ function Swipe() {
     // ? IF right POST to LIKES table
     if (direction === 'right') {
       // console.log('Moved Right')
-
+      console.log(characterId)
       axios.post('/api/likes', { liked_id: characterId }, {
         headers: { Authorization: `Bearer ${token}` }
       })
@@ -68,6 +68,15 @@ function Swipe() {
           checkNewMatches(characterId),
         )
     }
+    
+  }
+
+
+  const clicked = (character, dir) => {
+    console.log(characters)
+    swiped(dir, character.first_name, character.id)
+    updateCharacters(characters.filter(item => item !== character))
+
   }
 
 
@@ -139,8 +148,8 @@ function Swipe() {
         <p className="tinder-text">Oh no! You have run out of swipes!</p>
       </div>
       <div className="button-group">
-        <button className="button-style"><img className="button-img" src={decline} alt={'decline'} /></button>
-        <button className="button-style" id="button-style-right"><img className="button-img" id="accept" src={accept} alt={'accept'} /></button>
+        <button className="button-style"><img className="button-img" src={decline} onClick={() =>  clicked(characters[characters.length - 1], 'left')} alt={'decline'} /></button>
+        <button className="button-style" id="button-style-right"><img className="button-img" id="accept" src={accept} onClick={() => clicked(characters[characters.length - 1], 'right')} alt={'accept'} /></button>
       </div>
       {lastDirection ? <h2 className='infoText'>You swiped {lastDirection}</h2> : <h2 className='infoText'> Get Swiping</h2>}
       {/* {itsAMatch === true ?

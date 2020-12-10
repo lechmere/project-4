@@ -1,20 +1,18 @@
-import React, { useState, useEffect } from 'react'
-import { useHistory } from "react-router-dom";
 import axios from 'axios'
+import React, { useState, useEffect } from 'react'
+import { getUserId } from '../lib/auth'
+// import { useHistory } from 'react-router-dom'
+import camera from '../images/camera.svg'
 
+const EditProfile = (props) => {
+  const token = localStorage.getItem('token')
+  const [userInfo, updateUserInfo] = useState({})
+  const userId = getUserId()
 
-const Edit = (props) => {
-  console.log(props)
-  const userId = props.match.params.userId
-  let history = useHistory()
-  console.log(history)
-  
-  const [image, setImage] = useState('')
-
+  // ? Const needed to complete the PUT request.
   const [formData, updateFormData] = useState({
     email: '',
     password: '',
-    password_confirmation: '',
     first_name: '',
     image: '',
     bio: '',
@@ -25,35 +23,42 @@ const Edit = (props) => {
     children: '',
     employment: ''
   })
-  console.log(formData)
 
+  // ? Getting the information for the signed in user user. 
   useEffect(() => {
     axios.get(`/api/users/${userId}`, {
-      headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+      headers: { Authorization: `Bearer ${token}}` }
     })
-    .then(resp => {
-      updateFormData(resp.data)
-      console.log(resp.data)
-    })
+      .then(resp => {
+        updateUserInfo(resp.data)
+        console.log(resp.data)
+      })
   }, [])
 
+  console.log(userInfo)
+
+  // ? Cloudinary function to upload an image. 
   function handleUpload() {
     window.cloudinary.createUploadWidget(
       {
-        cloudName: '',
-        uploadPreset: '',
+        cloudName: 'kindlr',
+        uploadPreset: 'default_kindlr',
         cropping: true
       },
       (err, result) => {
         if (result.event !== 'success') {
           return
         }
-        axios.put(`/api/users/${userId}`, { url: result.info.secure_url })
-          .then((res) => setImage(res.data))
+        axios.put(`/api/users/${userId}`, { image: result.info.secure_url }, {
+          headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+        })
+        console.log(result.info.url)
+
       }
     ).open()
   }
 
+  // ? Function to compile information needed for the PUT request. 
   function handleChange(event) {
     const name = event.target.name
     const value = event.target.value
@@ -62,21 +67,8 @@ const Edit = (props) => {
       ...formData,
       [name]: value
     }
-
     updateFormData(data)
   }
-
-  // function handleUserChange(event) {
-  //   const name = event.target.name
-  //   const value = event.target.value
-
-  //   const data = {
-  //     ...userData,
-  //     [name]: value
-  //   }
-
-  //   updateUserData(data)
-  // }
 
   function handleSubmit(event) {
     event.preventDefault()
@@ -85,139 +77,148 @@ const Edit = (props) => {
     })
       .then(resp => {
         console.log(resp.data)
-        history.push(`/profile/${userId}`)
+        props.history.push(`/profile/${userId}`)
       })
   }
 
-  // if ((!formData.user)||(!userData.firstname)) {
-  //   return <>
-  //     <Banner />
-  //     <main className="homepage">
-  //       <div className="display-area">
-  //         <h1 className="loading">Loading...</h1>
-  //       </div>
-  //     </main>
-  //   </>
-  // }
 
-  return <>
-    <main className="editSession">
-      <form action="" className="edit" autoComplete="off">
-
-        <div className="field">
-          <img src={formData.image} className="editInput" />
-          <button onClick={handleUpload}>Upload Image</button>
+  return <section className="bg-color">
+    <section className="page-container">
+      <section className="page-content">
+        <div className="edit-cover">
+          <img className="profile-image" src={userInfo.image} alt={'user profile image'} />
+          <h1>{userInfo.first_name}, {userInfo.age}</h1>
+          <button
+            className="camera-button" onClick={handleUpload}>
+            <img
+              className="edit-icon" src={camera} alt={'back-arrow'} />
+          </button>
         </div>
 
-        <div className="field">
-          <label className="editLabel">First Name</label>
-          <input
-            className="editInput" 
-            type="text"
-            onChange={handleChange}
-            value={formData.first_name}
-            name="first_name"
-          />
-        </div>
-{/* 
-        <div className="field">
-          <label className="editLabel">Last Name</label>
-          <input
-            className="editInput" 
-            type="text"
-            onChange={handleChange}
-            value={formData.lastname}
-            name="lastname"
-          />
-        </div> */}
+        <hr className="edit-profile-hr"></hr>
 
-        <div className="field">
-          <label className="editLabel">Email</label>
-          <input
-            className="editInput" 
-            type="text"
-            onChange={handleChange}
-            value={formData.email}
-            name="email"
-          />
-        </div>
+        <form>
 
-        <div className="field">
-          <label className="editLabel">Password</label>
-          <input className="editInput"
-            type="password"
-            onChange={handleChange}
-            value={formData.password}
-          />
-        </div >
+          {/* <div className="form-section">
+            <input
+              placeholder="Email"
+              className="edit-input-field"
+              type="text"
+              onChange={handleChange}
+              value={formData.email}
+              name="email"
+            />
+          </div>
 
-        <div className="field">
-          <label className="editLabel">Password Confirmation</label>
-          <input className="editInput"
-            type="password"
-            onChange={handleChange}
-            value={formData.passwordConfirmation}
-            name="password_confirmation"
-          />
-        </div >
-        <div className="field">
-          <label className="editLabel">Your Bio</label>
-          <input className="editInput" 
-            type="text"
-            onChange={handleChange}
-            value={formData.bio}
-            name="bio"
-          />
-        </div>
-        <div className="field">
-          <label className="editLabel">Your Quote</label>
-          <input className="editInput" 
-            type="text"
-            onChange={handleChange}
-            value={formData.quote}
-            name="quote"
-          />
-        </div>
-        <div className="field">
-          <label className="editLabel">Your Religion</label>
-          <input className="editInput" 
-            type="text"
-            onChange={handleChange}
-            value={formData.religion}
-            name="religion"
-          />
-        </div>
-        <div className="field">
-          <label className="editLabel">Your Relationship Status</label>
-          <input className="editInput" 
-            type="text"
-            onChange={handleChange}
-            value={formData.relationship}
-            name="relationship"
-          />
-        </div>
-        {/* <div className="field">
-          <label className="editLabel">Do you have children?</label>
-          <input className="editInput" 
-            type="text"
-            onChange={handleChange}
-            value={formData.children}
-            name="children"
-          />
-        </div>
-        <div className="field">
-          <label className="editLabel">Your Employment Status</label>
-          <input className="editInput" 
-            type="text"
-            onChange={handleChange}
-            value={formData.employment}
-            name="employment"
-          />
-        </div> */}
-        <button className="button" type="submit" onClick={handleSubmit}>Save Changes</button>
-      </form>
-    </main>
-  </>
+          <div className="form-section">
+            <input
+              placeholder="Password"
+              className="edit-input-field"
+              type="password"
+              onChange={handleChange}
+              value={formData.password}
+              name="password"
+            />
+          </div > */}
+
+          <div className="edit-form-section">
+            <label>Bio</label>
+            <input
+              className="edit-input-field"
+              placeholder={userInfo.bio}
+              onChange={handleChange}
+              value={formData.bio}
+              name="bio"
+            />
+          </div>
+
+          <div className="edit-form-section">
+            <label>Children</label>
+            <input
+              placeholder={userInfo.children}
+              className="edit-input-field"
+              type="text"
+              onChange={handleChange}
+              value={formData.children}
+              name="children"
+            />
+          </div>
+          <div className="edit-form-section">
+            <label>Employment Status</label>
+            <input
+              placeholder={userInfo.employment}
+              className="edit-input-field"
+              type="text"
+              onChange={handleChange}
+              value={formData.employment}
+              name="employment"
+            />
+          </div>
+
+          <button
+            className="edit-profile-button"
+            type="submit"
+            onClick={handleSubmit}
+          >Save
+          </button>
+
+        </form>
+      </section>
+    </section>
+  </section>
 }
 
-export default Edit
+export default EditProfile
+
+//   < img className = "profile-image" src = { userInfo.image } alt = { 'user profile image'} />
+// <button
+//   className="button-green"
+//   onClick={handleUpload}
+// >
+//       Click to upload
+// </button>
+
+
+// <input
+//   placeholder={userInfo.first_name}
+//   onChange={handleChange}
+//   value={formData.first_name}
+//   name="first_name"
+// />
+
+// <input
+//   placeholder={userInfo.email}
+//   onChange={handleChange}
+//   value={formData.email}
+//   name="email"
+// />
+
+// <input
+//   placeholder="******"
+//   onChange={handleChange}
+//   value={formData.password}
+//   name="password"
+// />
+
+// <input
+//   placeholder={userInfo.bio}
+//   onChange={handleChange}
+//   value={formData.bio}
+//   name="bio"
+// />
+
+// <input
+//   placeholder={userInfo.quote}
+//   onChange={handleChange}
+//   value={formData.quote}
+//   name="quote"
+// />
+
+// <input
+//   placeholder={userInfo.religion}
+//   onChange={handleChange}
+//   value={formData.religion}
+//   name="religion"
+// />
+
+// <button onClick={handleSubmit}>Update</button>

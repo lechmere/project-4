@@ -4,19 +4,17 @@ import logo from '../images/white-logo.svg'
 import axios from 'axios'
 
 
-const Register = () => {
+const Register = (props) => {
 
   const [formData, updateFormData] = useState({
     first_name: '',
     email: '',
     password: '',
-    password_confirmation: '',
     age: '',
     image: '',
     postcode: '',
     bio: ''
   })
-
 
   function handleChange(event) {
     const name = event.target.name
@@ -73,30 +71,21 @@ const Register = () => {
           className="input-field"
           type="password"
           onChange={handleChange}
+          value={formData.password}
+          name="password"
           placeholder="Password"
         />
       </div >
 
       <div className="form-section-register">
-        <input
-          className="input-field"
-          type="password"
-          onChange={handleChange}
-          value={formData.password_confirmation}
-          name="password_confirmation"
-          placeholder="Password Confirmation"
-        />
-      </div >
-
-      <div className="form-section-register">
-        <input
+        <button
           className="input-field"
           type="text"
           onChange={handleChange}
           value={formData.image}
           name="image"
           placeholder="Selfie"
-        />
+        >Selfie</button>
       </div>
 
       <div className="form-section-register">
@@ -133,7 +122,7 @@ const Register = () => {
       </div>
       <button className="form-button" type="submit" onClick={handleSubmit}>Sign Up</button>
 
-<a className="alt-page" href="/login">Have an Account? Login</a>
+      <a className="alt-page" href="/login">Have an Account? Login</a>
 
     </form>
 

@@ -32,13 +32,20 @@ function Message(props) {
   }
 
   useEffect(() => {
-    axios.get('/api/message', {
-      headers: { Authorization: `Bearer ${token}` }
-    })
-      .then(resp => {
-        updateAllMessages(resp.data)
+    const interval = setInterval(() => {
+      axios.get('/api/message', {
+        headers: { Authorization: `Bearer ${token}` }
       })
-      .catch(err => console.log(err))
+        .then(resp => {
+          updateAllMessages(resp.data)
+        })
+        .catch(err => console.log(err))
+    }, 500)
+    return () => clearInterval(interval)
+
+    
+
+    
   }, [])
 
 
@@ -102,6 +109,14 @@ function Message(props) {
           return console.log(resp.data.errors)
         }
       })
+
+    userMessage.content = ''
+  }
+
+  function handleEnter(event) {
+    if (event.key === 'Enter') {
+      handleSubmit(event)
+    }
   }
 
   return <section className="bg-color">
@@ -136,6 +151,7 @@ function Message(props) {
             className="message-field"
             placeholder="Type your message..."
             onChange={handleChange}
+            onKeyDown={handleEnter}
             value={userMessage.content}
             name="content"
           >
