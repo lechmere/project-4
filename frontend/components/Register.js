@@ -78,17 +78,6 @@ const Register = (props) => {
       </div >
 
       <div className="form-section-register">
-        <button
-          className="input-field"
-          type="text"
-          onChange={handleChange}
-          value={formData.image}
-          name="image"
-          placeholder="Selfie"
-        >Selfie</button>
-      </div>
-
-      <div className="form-section-register">
         <input
           className="input-field"
           type="integer"

@@ -146,7 +146,7 @@ body {
 
 // ***** || SWIPE PAGE 
 .cardContainer {
-  min-width: 327px;
+  max-width: 279px;
   height: 343px;
 }
 
@@ -157,7 +157,7 @@ body {
 .card {
   position: relative;
   background-color: #fff;
-  min-width: 327px;
+  min-width: 279px;
   height: 342px;
   border-radius: 30px;
   background-size: cover;
@@ -196,7 +196,7 @@ body {
   background-image: linear-gradient(rgba(243, 114, 125, 0.8), rgba(246, 158, 131, 0.8));
   border-radius: 0 0 30px 30px;
   bottom: 0px;
-  min-width: 327px;
+  min-width: 279px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -211,6 +211,7 @@ body {
   h3 {
     margin-left: 24px;
     color: white;
+    max-width: 220px;
   }
 }
 
@@ -791,4 +792,36 @@ label {
   position: absolute;
   margin-top: 410px;
   z-index: 3000;
+}
+
+
+// ***** || HOME
+.home-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+img.homeimage  {
+
+
+    width: 200px;
+
+}
+
+.home-content { 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px;
+  height: -webkit-fill-available;
+
+  h2 {
+    opacity: 0.9;
+font-family: $monts;
+font-size: 16px;
+color: #575CB3;
+letter-spacing: 0;
+text-align: center;
+  }
 }
