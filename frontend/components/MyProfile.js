@@ -54,7 +54,6 @@ const viewCurrentUser = (props) => {
           <h2>{viewCurrentUser.employment}</h2>
           <h3>Employment</h3>
         </div>
-
       </section>
     </section>
     <Menu />

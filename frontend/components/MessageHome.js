@@ -84,12 +84,6 @@ function MessageHome() {
           })}
         </div>
 
-
-        {/* {theyStarted.map((messageTitle, index) => {
-    return <Link key={index} to={'/message'}>
-      <h2 className="testing">{messageTitle.to_user.first_name} </h2>
-    </Link>
-  })} */}
       </section>
 
     </section>
