@@ -12,6 +12,7 @@ import Message from './components/Message'
 import MyProfile from './components/MyProfile'
 import EditProfile from './components/EditProfile'
 
+
 // ! Some starter code for your frontends, change this
 // ! however you like.
 const App = () => {
@@ -26,7 +27,7 @@ const App = () => {
       <Route exact path="/message" component={Message} />
       <Route exact path="/message/:id" component={Message} />
       <Route exact path="/myprofile/:userId" component={MyProfile} />
-      <Route exact path="/editprofile/" component={EditProfile}/>
+      <Route exact path="/editprofile" component={EditProfile}/>
     </Switch>
   </BrowserRouter>
 }
