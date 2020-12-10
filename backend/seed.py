@@ -14,7 +14,7 @@ with app.app_context():
         email="bonnie@bonnie.com",
         password="bonnie",
         age=24,
-        image="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mnx8d29tYW58ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60",
+        image="https://classiq.me/wp-content/uploads/2011/06/faye-dunaways-style-bonnie-and-clyde-e1346685504275.png",
         postcode="SW1W 8TH",
         bio="I love walks on the beach",
         quote="I am the best!",
@@ -29,7 +29,7 @@ with app.app_context():
         email="clyde@clyde.com",
         password="clyde",
         age=24,
-        image="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mnx8d29tYW58ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60",
+        image="https://fourthandsycamore.files.wordpress.com/2015/03/bonnie-clyde-warren-posing-gun.jpg",
         postcode="SW1W 8TH",
         bio="Money is the way to my heart",
         quote="",
@@ -155,23 +155,8 @@ with app.app_context():
     )
 
     like4 = Likes(
-      liker_id=3,
-      liked_id=4  
-    )
-
-    like5 = Likes(
-      liker_id=4,
-      liked_id=3  
-    )
-
-    like6 = Likes(
-      liker_id=3,
-      liked_id=2  
-    )
-
-    like7 = Likes(
-      liker_id=2,
-      liked_id=3  
+      liker_id=7,
+      liked_id=1  
     )
 
     like1.save()

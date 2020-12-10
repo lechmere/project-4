@@ -23,37 +23,48 @@ const viewCurrentUser = (props) => {
 
   return <section className="bg-color">
     <section className="page-container">
-      <section className="page-content">
+      <section className="message-box">
+      <div className="overflow-fade-edit">
+        </div>
         <div className="edit-cover">
           <img className="profile-image" src={viewCurrentUser.image} alt={'user-profile-image'} />
           <h1>{viewCurrentUser.first_name}, {viewCurrentUser.age}</h1>
-          {getUserId(viewCurrentUser.id) && 
-          <Link to={'/editprofile'}>
-            <img className="edit-icon" src={edit} alt={'back-arrow'} />
-          </Link>}
+          {getUserId(viewCurrentUser.id) &&
+            <Link to={'/editprofile'}>
+              <img className="edit-icon" src={edit} alt={'back-arrow'} />
+            </Link>}
 
         </div>
 
-        <hr></hr>
-        <div className="message-content profile-content">
-          <h2>{viewCurrentUser.bio}</h2>
-          <h3>Bio</h3>
+        <hr className="edit-profile-hr"></hr>
+        <div className="dm-myprofile-scroll">
+
+          <div className="message-content profile-content">
+            <h2>{viewCurrentUser.bio}</h2>
+            <h3>Bio</h3>
+          </div>
+
+          <div className="message-content profile-content">
+            <h2>{viewCurrentUser.quote}</h2>
+            <h3>About Me</h3>
+          </div>
+
+          <div className="message-content profile-content">
+            <h2>{viewCurrentUser.postcode}</h2>
+            <h3>Location</h3>
+          </div>
+
+          <div className="message-content profile-content">
+            <h2>{viewCurrentUser.children}</h2>
+            <h3>Children</h3>
+          </div>
+
+          <div className="message-content profile-content">
+            <h2>{viewCurrentUser.employment}</h2>
+            <h3>Employment</h3>
+          </div>
         </div>
 
-        <div className="message-content profile-content">
-          <h2>{viewCurrentUser.postcode}</h2>
-          <h3>Location</h3>
-        </div>
-
-        <div className="message-content profile-content">
-          <h2>{viewCurrentUser.children}</h2>
-          <h3>Children</h3>
-        </div>
-
-        <div className="message-content profile-content">
-          <h2>{viewCurrentUser.employment}</h2>
-          <h3>Employment</h3>
-        </div>
       </section>
     </section>
     <Menu />

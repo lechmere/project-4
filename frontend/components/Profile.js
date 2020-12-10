@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 
-const ViewProfile = ( {userId} ) => {
+const ViewProfile = ({ userId }) => {
 
   const [viewProfile, updateViewProfile] = useState({})
 
@@ -26,28 +26,32 @@ const ViewProfile = ( {userId} ) => {
           <h1>{viewProfile.first_name}, {viewProfile.age}</h1>
         </div>
 
-        <hr></hr>
+        <hr className="edit-profile-hr"></hr>
+        <div className="dm-inner-scroll">
+          <div>
+            <div className="message-content profile-content">
+              <h2>{viewProfile.bio}</h2>
+              <h3 id="modelh3">Bio</h3>
+            </div>
 
-        <div className="message-content profile-content">
-          <h2>{viewProfile.bio}</h2>
-          <h3>Bio</h3>
+            <div className="message-content profile-content">
+              <h2>{viewProfile.quote}</h2>
+              <h3 id="modelh3">About me</h3>
+            </div>
+            {/* {/* <div className="message-content profile-content">
+              <h2>{viewProfile.postcode}</h2>
+              <h3>Location</h3>
+            </div> */}
+
+
+
+            <div className="message-content profile-content">
+              <h2>{viewProfile.employment}</h2>
+              <h3 id="modelh3">Employment</h3>
+            </div>
+          </div>
+
         </div>
-
-        <div className="message-content profile-content">
-          <h2>{viewProfile.postcode}</h2>
-          <h3>Location</h3>
-        </div>
-
-        <div className="message-content profile-content">
-          <h2>{viewProfile.children}</h2>
-          <h3>Children</h3>
-        </div>
-
-        <div className="message-content profile-content">
-          <h2>{viewProfile.employment}</h2>
-          <h3>Employment</h3>
-        </div>
-
       </section>
     </section>
   </section>
