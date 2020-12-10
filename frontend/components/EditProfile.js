@@ -85,7 +85,9 @@ const EditProfile = (props) => {
 
   return <section className="bg-color">
     <section className="page-container">
-      <section className="page-content">
+      <section className="message-box">
+        <div className="overflow-fade-edit">
+        </div>
         <div className="edit-cover">
           <img className="profile-image" src={userInfo.image} alt={'user profile image'} />
           <h1>{userInfo.first_name}, {userInfo.age}</h1>
@@ -97,73 +99,77 @@ const EditProfile = (props) => {
         </div>
 
         <hr className="edit-profile-hr"></hr>
+        <div className="dm-inner-scroll">
+          <form>
 
-        <form>
+            <button
+              className="edit-profile-button"
+              type="submit"
+              onClick={handleSubmit}
+            >Save
+            </button>
 
-          {/* <div className="form-section">
-            <input
-              placeholder="Email"
-              className="edit-input-field"
-              type="text"
-              onChange={handleChange}
-              value={formData.email}
-              name="email"
-            />
-          </div>
+            <div className="form-section">
+              <input
+                placeholder="Email"
+                className="edit-input-field"
+                type="text"
+                onChange={handleChange}
+                value={formData.email}
+                name="email"
+              />
+            </div>
 
-          <div className="form-section">
-            <input
-              placeholder="Password"
-              className="edit-input-field"
-              type="password"
-              onChange={handleChange}
-              value={formData.password}
-              name="password"
-            />
-          </div > */}
+            <div className="form-section">
+              <input
+                placeholder="Password"
+                className="edit-input-field"
+                type="password"
+                onChange={handleChange}
+                value={formData.password}
+                name="password"
+              />
+            </div >
 
-          <div className="edit-form-section">
-            <label>Bio</label>
-            <input
-              className="edit-input-field"
-              placeholder={userInfo.bio}
-              onChange={handleChange}
-              value={formData.bio}
-              name="bio"
-            />
-          </div>
+            <div className="edit-form-section">
+              <label>Bio</label>
+              <input
+                className="edit-input-field"
+                placeholder={userInfo.bio}
+                onChange={handleChange}
+                value={formData.bio}
+                name="bio"
+              />
+            </div>
 
-          <div className="edit-form-section">
-            <label>Children</label>
-            <input
-              placeholder={userInfo.children}
-              className="edit-input-field"
-              type="text"
-              onChange={handleChange}
-              value={formData.children}
-              name="children"
-            />
-          </div>
-          <div className="edit-form-section">
-            <label>Employment Status</label>
-            <input
-              placeholder={userInfo.employment}
-              className="edit-input-field"
-              type="text"
-              onChange={handleChange}
-              value={formData.employment}
-              name="employment"
-            />
-          </div>
+            <div className="edit-form-section">
+              <label>Children</label>
+              <input
+                placeholder={userInfo.children}
+                className="edit-input-field"
+                type="text"
+                onChange={handleChange}
+                value={formData.children}
+                name="children"
+              />
+            </div>
+            <div className="edit-form-section">
+              <label>Employment Status</label>
+              <input
+                placeholder={userInfo.employment}
+                className="edit-input-field"
+                type="text"
+                onChange={handleChange}
+                value={formData.employment}
+                name="employment"
+              />
+            </div>
 
-          <button
-            className="edit-profile-button"
-            type="submit"
-            onClick={handleSubmit}
-          >Save
-          </button>
 
-        </form>
+
+          </form>
+        </div>
+
       </section>
     </section>
     <Menu />
