@@ -6,7 +6,9 @@ import distance from '../images/distance-marker.svg'
 import decline from '../images/error-circle.svg'
 import accept from '../images/heart-circle.svg'
 import Modal from './modal/Modal'
+import ModalTwo from './modal/ModalTwo'
 import { getUserId } from '../lib/auth'
+import Profile from './Profile'
 import Menu from '../components/Menu'
 
 function Swipe() {
@@ -19,6 +21,7 @@ function Swipe() {
   const [matchesInfo, updateMatchesInfo] = useState([])
   const [characterId, updateCharacterId] = useState(0)
   const [isOpen, setIsOpen] = useState(false)
+  const [isOpenTwo, setIsOpenTwo] = useState(false)
 
 
   // ? GET a list of all USERS to update CHARACTERS for CARDS
@@ -54,7 +57,7 @@ function Swipe() {
     console.log('removing: ' + nameToDelete)
     setLastDirection(direction)
     updateCharacterId(characterId)
-    console.log(characterId , "inside swiped")
+    console.log(characterId, "inside swiped")
     // ? IF right POST to LIKES table
     if (direction === 'right') {
       // console.log('Moved Right')
@@ -66,7 +69,7 @@ function Swipe() {
           checkNewMatches(characterId),
         )
     }
-    
+
   }
 
 
@@ -91,11 +94,15 @@ function Swipe() {
       return true
     })
 
-    if (filteredMatches.length === 0 ) {
+    if (filteredMatches.length === 0) {
       return setIsOpen(false)
     } else {
       return setIsOpen(true)
     }
+  }
+
+  function tap(userId) {
+   setIsOpenTwo(userId)
   }
 
   const outOfFrame = (name) => {
@@ -114,37 +121,46 @@ function Swipe() {
       </div>
       <div className='cardContainer'>
         {characters.map((character) =>
-          <TinderCard className='swipe'
-            key={character.first_name}
-            onSwipe={(dir) => swiped(dir, character.first_name, character.id)}
-            onCardLeftScreen={() => outOfFrame(character.first_name)}
-          >
-            <div style={{ backgroundImage: 'url(' + character.image + ')' }} className='card'>
-              <div className='card-distance'>
-                <img src={distance} alt={'distance-arrow'} />
-                <h3>2.2 Km away</h3>
+          <div key={character.first_name} onClick={() => tap(character.id)}>
+            <TinderCard className='swipe'
+              key={character.first_name}
+              onSwipe={(dir) => swiped(dir, character.first_name, character.id)}
+              onCardLeftScreen={() => outOfFrame(character.first_name)}
+            >
+              <div style={{ backgroundImage: 'url(' + character.image + ')' }} className='card'>
+                <div className='card-distance'>
+                  <img src={distance} alt={'distance-arrow'} />
+                  <h3>2.2 Km away</h3>
+                </div>
+                <div className='card-user'>
+                  <h2>{character.first_name}, {character.age}</h2>
+                  <h3>{character.bio}</h3>
+                </div>
               </div>
-              <div className='card-user'>
-                <h2>{character.first_name}, {character.age}</h2>
-                <h3>{character.bio}</h3>
-              </div>
-            </div>
-          </TinderCard>
+            </TinderCard>
+          </div>
         )}
+        <div className="buttonwrapper">
+          <ModalTwo open={isOpenTwo} onClose={() => setIsOpenTwo(false)}>
+            <Profile userId={isOpenTwo} />
+          </ModalTwo>
+        </div>
         <br />
         <p className="tinder-text">Oh no! You have run out of swipes!</p>
       </div>
       <div className="button-group">
-        <button className="button-style"><img className="button-img" src={decline} onClick={() =>  clicked(characters[characters.length - 1], 'left')} alt={'decline'} /></button>
+        <button className="button-style"><img className="button-img" src={decline} onClick={() => clicked(characters[characters.length - 1], 'left')} alt={'decline'} /></button>
         <button className="button-style" id="button-style-right"><img className="button-img" id="accept" src={accept} onClick={() => clicked(characters[characters.length - 1], 'right')} alt={'accept'} /></button>
       </div>
       {lastDirection ? <h2 className='infoText'>You swiped {lastDirection}</h2> : <h2 className='infoText'> Get Swiping</h2>}
+      {/* {itsAMatch === true ?
+        <h1>ITS A MATCH!!!</h1>
+        :
+        <h1>NOT A MATCH!!</h1>
+      } */}
     </div>
     <Menu />
   </div>
-  
-
-
 }
 
 
