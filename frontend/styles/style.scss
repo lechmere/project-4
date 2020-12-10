@@ -145,6 +145,7 @@ body {
 
 
 // ***** || SWIPE PAGE 
+
 .cardContainer {
   max-width: 279px;
   height: 343px;
@@ -273,6 +274,7 @@ body {
 
 .swipeOut {
   color: $blue;
+  text-align: center;
 }
 
 .buttons button:hover {
@@ -332,21 +334,26 @@ nav {
   button {
     border: none;
     background-color: transparent;
+    padding-top: 50%;
+    outline: none;
   }
 
   img {
     width: 24px;
-    height: 24px
+    height: 24px;
+    border: 0;
   }
 }
 
 .nav-icon:hover .icon-passive,
 .nav-icon .icon-active {
   display: none;
+  outline: none;
 }
 
 .nav-icon:hover .icon-active {
   display: inline;
+  outline: none;
 }
 
 
@@ -697,10 +704,10 @@ textarea {
 
   h1 {
     margin-left: 20px;
-      font-size: 16px;
-      color: #575CB3;
-      letter-spacing: 0;
-      font-weight: 600;
+    font-size: 16px;
+    color: #575CB3;
+    letter-spacing: 0;
+    font-weight: 600;
   }
 }
 
@@ -724,32 +731,31 @@ textarea {
   text-align: left;
   padding-left: 16px;
   margin-top: 10px
-
 }
 
 .edit-input-field::placeholder,
 .edit-input-field:focus {
-font-family: $monts;
-font-weight: 400;
-font-size: 14px;
-color: #575CB3;
-outline: none;
-text-align: left;
+  font-family: $monts;
+  font-weight: 400;
+  font-size: 14px;
+  color: #575CB3;
+  outline: none;
+  text-align: left;
 }
 
 .edit-profile-button {
-    background-image: linear-gradient(135deg, rgba(243, 114, 125, 0.80) 0%, rgba(246, 158, 131, 0.80) 100%);
-    border-radius: 10px;
-    border: none;
-    height: 46px;
-    width: 112px;
-    color: white;
-    font-size: 16px;
-    font-family: $monts;
-    font-weight: 500;
-    font-style: italic;
-    margin-top: 24px;
-    text-transform: uppercase;
+  background-image: linear-gradient(135deg, rgba(243, 114, 125, 0.80) 0%, rgba(246, 158, 131, 0.80) 100%);
+  border-radius: 10px;
+  border: none;
+  height: 46px;
+  width: 112px;
+  color: white;
+  font-size: 16px;
+  font-family: $monts;
+  font-weight: 500;
+  font-style: italic;
+  margin-top: 24px;
+  text-transform: uppercase;
 
   a {
     font-family: Montserrat-MediumItalic;
@@ -762,12 +768,12 @@ text-align: left;
 }
 
 label {
-    font-family: $monts;
-    font-weight: 500;
-    font-size: 12px;
-    color: #575CB3;
-    letter-spacing: 0;
-    margin-left: 16px;
+  font-family: $monts;
+  font-weight: 500;
+  font-size: 12px;
+  color: #575CB3;
+  letter-spacing: 0;
+  margin-left: 16px;
 }
 
 .edit-form-section {
@@ -802,14 +808,14 @@ label {
   justify-content: space-around;
 }
 
-img.homeimage  {
+img.homeimage {
 
 
-    width: 200px;
+  width: 200px;
 
 }
 
-.home-content { 
+.home-content {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -818,10 +824,25 @@ img.homeimage  {
 
   h2 {
     opacity: 0.9;
-font-family: $monts;
-font-size: 16px;
-color: #575CB3;
-letter-spacing: 0;
-text-align: center;
+    font-family: $monts;
+    font-size: 16px;
+    color: #575CB3;
+    letter-spacing: 0;
+    text-align: center;
+  }
+
+  #anchorStyle {
+    position: absolute;
+    margin-top: 450px;
+  }
+
+  #modelh3 {
+    text-align: left;
+  }
+
+  .dm-myprofile-scroll {
+    max-height: 390px;
+    margin-bottom: 14px;
+    overflow: scroll;
   }
 }

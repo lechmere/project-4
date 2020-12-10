@@ -13,11 +13,9 @@ const EditProfile = (props) => {
   // ? Const needed to complete the PUT request.
   const [formData, updateFormData] = useState({
     email: '',
-    password: '',
     first_name: '',
     image: '',
     bio: '',
-    age: '',
     quote: '',
     religion: '',
     relationship: '',
@@ -78,7 +76,7 @@ const EditProfile = (props) => {
     })
       .then(resp => {
         console.log(resp.data)
-        props.history.push(`/profile/${userId}`)
+        props.history.push(`/myprofile/`)
       })
   }
 
@@ -86,11 +84,9 @@ const EditProfile = (props) => {
   return <section className="bg-color">
     <section className="page-container">
       <section className="message-box">
-        <div className="overflow-fade-edit">
-        </div>
         <div className="edit-cover">
           <img className="profile-image" src={userInfo.image} alt={'user profile image'} />
-          <h1>{userInfo.first_name}, {userInfo.age}</h1>
+          <h1>{userInfo.first_name}</h1>
           <button
             className="camera-button" onClick={handleUpload}>
             <img
@@ -119,17 +115,6 @@ const EditProfile = (props) => {
                 name="email"
               />
             </div>
-
-            <div className="form-section">
-              <input
-                placeholder="Password"
-                className="edit-input-field"
-                type="password"
-                onChange={handleChange}
-                value={formData.password}
-                name="password"
-              />
-            </div >
 
             <div className="edit-form-section">
               <label>Bio</label>

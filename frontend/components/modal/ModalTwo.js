@@ -7,7 +7,9 @@ export default function Modal({ open, children, onClose }) {
       <div className="overlay" />
       <div className="modal">
         {children}
-        <a onClick={onClose}>Keep Swiping</a>
+        {<a id="anchorStyle" onClick={onClose}>Keep Swiping</a>}
+
+
       </div>
     </>
   )
