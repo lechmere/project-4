@@ -146,7 +146,7 @@ function Swipe() {
           </ModalTwo>
         </div>
         <br />
-        <p className="tinder-text">Oh no! You have run out of swipes!</p>
+        <h2 className="swipeOut">Oh no! You have run out of swipes!</h2>
       </div>
       <div className="button-group">
         <button className="button-style"><img className="button-img" src={decline} onClick={() => clicked(characters[characters.length - 1], 'left')} alt={'decline'} /></button>

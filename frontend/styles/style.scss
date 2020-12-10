@@ -270,7 +270,9 @@ body {
   opacity: 0.75;
 }
 
-
+.swipeOut {
+  color: $blue;
+}
 
 .buttons button:hover {
   transform: scale(1.05);

@@ -25,7 +25,7 @@ const App = () => {
       <Route exact path="/message-home" component={MessageHome} />
       <Route exact path="/message" component={Message} />
       <Route exact path="/message/:id" component={Message} />
-      <Route exact path="/myprofile/:userId" component={MyProfile} />
+      <Route exact path="/myprofile" component={MyProfile} />
       <Route exact path="/editprofile/" component={EditProfile}/>
     </Switch>
   </BrowserRouter>

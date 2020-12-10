@@ -100,27 +100,6 @@ const EditProfile = (props) => {
 
         <form>
 
-          {/* <div className="form-section">
-            <input
-              placeholder="Email"
-              className="edit-input-field"
-              type="text"
-              onChange={handleChange}
-              value={formData.email}
-              name="email"
-            />
-          </div>
-
-          <div className="form-section">
-            <input
-              placeholder="Password"
-              className="edit-input-field"
-              type="password"
-              onChange={handleChange}
-              value={formData.password}
-              name="password"
-            />
-          </div > */}
 
           <div className="edit-form-section">
             <label>Bio</label>
