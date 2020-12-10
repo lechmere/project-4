@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import edit from '../images/edit.svg'
 
 const ViewProfile = ( {userId} ) => {
 
@@ -16,6 +15,8 @@ const ViewProfile = ( {userId} ) => {
         updateViewProfile(resp.data)
       })
   }, [])
+
+  console.log(viewProfile.id)
 
   return <section className="bg-color">
     <section className="page-container">

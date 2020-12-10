@@ -1,23 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="14px" height="20px" viewBox="0 0 14 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>nav-message</title>
-    <defs>
-        <filter id="filter-1">
-            <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0.490196 0 0 0 0 0.513725 0 0 0 0 1.000000 0 0 0 1.000000 0"></feColorMatrix>
-        </filter>
-    </defs>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.4">
-        <g id="101_Home" transform="translate(-97.000000, -604.000000)">
-            <g id="NAV" transform="translate(24.000000, 585.000000)">
-                <g id="Stockholm-Icons-/-White-/-Communication-/-Sending" transform="translate(68.000000, 17.000000)" filter="url(#filter-1)">
-                    <g transform="translate(12.000000, 12.000000) rotate(-90.000000) translate(-12.000000, -12.000000) ">
-                        <rect id="bound" x="0" y="0" width="24" height="24"></rect>
-                        <path d="M10,5.8705185 C10,5.78199118 10.0235042,5.69505102 10.0681105,5.61858299 C10.2072507,5.38005703 10.5134096,5.29948891 10.7519355,5.43862905 L10.7519355,5.43862905 L21.2596181,11.5681105 C21.3341199,11.6115699 21.3961126,11.6735627 21.439572,11.7480645 C21.5787122,11.9865904 21.498144,12.2927493 21.2596181,12.4318895 L21.2596181,12.4318895 L10.7519355,18.561371 C10.6754675,18.6059773 10.5885273,18.6294815 10.5,18.6294815 C10.2238576,18.6294815 10,18.4056239 10,18.1294815 L10,18.1294815 L10,13 L20.1538462,12 L10,11 Z" id="Combined-Shape" fill="#FFFFFF"></path>
-                        <rect id="Rectangle-Copy" fill="#FFFFFF" opacity="0.6" x="5" y="16" width="3" height="2" rx="1"></rect>
-                        <rect id="Rectangle-Copy-2" fill="#FFFFFF" x="2" y="11" width="6" height="2" rx="1"></rect>
-                        <rect id="Rectangle-Copy-3" fill="#FFFFFF" opacity="0.6" x="5" y="6" width="3" height="2" rx="1"></rect>
-                    </g>
-                </g>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>nav-messages</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.6">
+        <g id="102_Profile" transform="translate(-92.000000, -602.000000)">
+            <g id="nav-messages" transform="translate(92.000000, 602.000000)">
+                <rect id="bound" transform="translate(12.000000, 12.000000) rotate(-90.000000) translate(-12.000000, -12.000000) " x="0" y="0" width="24" height="24"></rect>
+                <path d="M6,1.8705185 C6,1.78199118 6.0235042,1.69505102 6.06811055,1.61858299 C6.20725069,1.38005703 6.51340956,1.29948891 6.75193551,1.43862905 L6.75193551,1.43862905 L17.2596181,7.56811055 C17.3341199,7.61156994 17.3961126,7.67356267 17.439572,7.74806449 C17.5787122,7.98659044 17.498144,8.29274931 17.2596181,8.43188945 L17.2596181,8.43188945 L6.75193551,14.561371 C6.67546748,14.6059773 6.58852732,14.6294815 6.5,14.6294815 C6.22385763,14.6294815 6,14.4056239 6,14.1294815 L6,14.1294815 L6,9 L16.1538462,8 L6,7 Z" id="Combined-Shape" fill="#7D83FF" transform="translate(12.000000, 8.000000) rotate(-90.000000) translate(-12.000000, -8.000000) "></path>
+                <rect id="Rectangle-Copy" fill="#7D83FF" transform="translate(17.000000, 17.500000) rotate(-90.000000) translate(-17.000000, -17.500000) " x="15.5" y="16.5" width="3" height="2" rx="1"></rect>
+                <rect id="Rectangle-Copy-2" fill="#7D83FF" transform="translate(12.000000, 19.000000) rotate(-90.000000) translate(-12.000000, -19.000000) " x="9" y="18" width="6" height="2" rx="1"></rect>
+                <rect id="Rectangle-Copy-3" fill="#7D83FF" transform="translate(7.000000, 17.500000) rotate(-90.000000) translate(-7.000000, -17.500000) " x="5.5" y="16.5" width="3" height="2" rx="1"></rect>
             </g>
         </g>
     </g>

@@ -9,6 +9,7 @@ import Modal from './modal/Modal'
 import ModalTwo from './modal/ModalTwo'
 import { getUserId } from '../lib/auth'
 import Profile from './Profile'
+import Menu from '../components/Menu'
 
 function Swipe() {
   // const characters = db
@@ -158,10 +159,8 @@ function Swipe() {
         <h1>NOT A MATCH!!</h1>
       } */}
     </div>
+    <Menu />
   </div>
-
-
-
 }
 
 

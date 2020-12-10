@@ -28,6 +28,7 @@ const viewCurrentUser = (props) => {
         <div className="edit-cover">
           <img className="profile-image" src={viewCurrentUser.image} alt={'user-profile-image'} />
           <h1>{viewCurrentUser.first_name}, {viewCurrentUser.age}</h1>
+          {/* {getUserId()(viewProfile.id) && to={'/editprofile'}} */}
           <img className="edit-icon" src={edit} alt={'back-arrow'} />
         </div>
           <div className="details">
