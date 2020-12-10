@@ -6,7 +6,6 @@ import './styles/style.scss'
 import Home from './components/Home'
 import Login from './components/Login'
 import Register from './components/Register'
-import Settings from './components/Settings'
 import Swipe from './components/Swipe'
 import MessageHome from './components/MessageHome'
 import Message from './components/Message'
@@ -21,7 +20,6 @@ const App = () => {
     <Switch>
       <Route exact path="/" component={Home} />
       <Route exact path="/login" component={Login} />
-      <Route exact path="/settings" component={Settings} />
       <Route exact path="/register" component={Register} />
       <Route exact path="/swipe" component={Swipe} />
       <Route exact path="/message-home" component={MessageHome} />

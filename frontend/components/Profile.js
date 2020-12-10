@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import edit from '../images/edit.svg'
 import Menu from '../components/Menu'
+import { getUserId } from '../lib/auth'
 
 const ViewProfile = (props) => {
 
@@ -20,13 +21,19 @@ const ViewProfile = (props) => {
       })
   }, [])
 
+  console.log(viewProfile.id)
+
   return <section className="bg-color">
     <section className="page-container">
       <section className="page-content">
         <div className="edit-cover">
           <img className="profile-image" src={viewProfile.image} alt={'user-profile-image'} />
           <h1>{viewProfile.first_name}, {viewProfile.age}</h1>
+          {/* {getUserId()(viewProfile.id) && to={'/editprofile'}} */}
+
           <img className="edit-icon" src={edit} alt={'back-arrow'} />
+
+
         </div>
 
         <hr></hr>

@@ -12,19 +12,28 @@ import profilePassive from '../images/nav-profile.svg'
 const Menu = () => {
 
   return <nav>
-    <button className="nav-icon">
-      <img className="icon-passive"src={messagePassive} alt={'message-passive'} />
-      <img className="icon-active"src={messageActive} alt={'message-active'} />
-    </button>
-    <button className="nav-icon">
-      <img className="icon-passive" src={swipePassive} alt={'swipe-passive'} />
-      <img className="icon-active" src={swipeActive} alt={'swipe-active'} />
-    </button>
-    <button className="nav-icon">
-      <img className="icon-passive" src={profilePassive} alt={'profile-passive'} />
-      <img className="icon-active" src={profileActive} alt={'profile-active'} />
-    </button>
-  </nav>
+    <Link to={'/message-home'}>
+      <button className="nav-icon">
+        <img className="icon-passive" src={messagePassive} alt={'message-passive'} />
+        <img className="icon-active" src={messageActive} alt={'message-active'} />
+      </button>
+    </Link>
+
+    <Link to={'/swipe'}>
+      <button className="nav-icon">
+        <img className="icon-passive" src={swipePassive} alt={'swipe-passive'} />
+        <img className="icon-active" src={swipeActive} alt={'swipe-active'} />
+      </button>
+    </Link>
+
+    <Link to={`/profile/${getUserId()}`}>
+      <button className="nav-icon">
+        <img className="icon-passive" src={profilePassive} alt={'profile-passive'} />
+        <img className="icon-active" src={profileActive} alt={'profile-active'} />
+      </button>
+    </Link>
+
+  </nav >
 }
 
 export default Menu
