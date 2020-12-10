@@ -43,6 +43,7 @@ $blue : #575CB3;
   align-items: center;
 }
 
+
 .page-inner-scroll {
   max-height: 400px;
   overflow: scroll;
@@ -668,8 +669,108 @@ textarea {
   background-image: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 100%);
   position: absolute;
   margin-top: 365px;
+  z-index: 3000;
 }
 
-.testing {
-  background-color: #f69e83;
+
+
+// ----------
+
+
+
+// **** || PROFILE PAGE
+.edit-cover {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+
+  h1 {
+    margin-left: 20px;
+      font-size: 16px;
+      color: #575CB3;
+      letter-spacing: 0;
+      font-weight: 600;
+  }
+}
+
+.edit-icon {
+  margin-left: 110px;
+}
+
+.profile-content {
+  margin-bottom: 25px
+}
+
+.edit-input-field {
+  background: #EDEEFF;
+  border-radius: 20px;
+  width: 279px;
+  height: 51px;
+  border: none;
+  color: #575CB3;
+  font-weight: 400;
+  font-size: 14px;
+  text-align: left;
+  padding-left: 16px;
+  margin-top: 10px
+
+}
+
+.edit-input-field::placeholder,
+.edit-input-field:focus {
+font-family: $monts;
+font-weight: 400;
+font-size: 14px;
+color: #575CB3;
+outline: none;
+text-align: left;
+}
+
+.edit-profile-button {
+    background-image: linear-gradient(135deg, rgba(243, 114, 125, 0.80) 0%, rgba(246, 158, 131, 0.80) 100%);
+    border-radius: 10px;
+    border: none;
+    height: 46px;
+    width: 112px;
+    color: white;
+    font-size: 16px;
+    font-family: $monts;
+    font-weight: 500;
+    font-style: italic;
+    margin-top: 24px;
+    text-transform: uppercase;
+
+  a {
+    font-family: Montserrat-MediumItalic;
+    font-size: 13px;
+    color: #6B70E6;
+    letter-spacing: 0;
+    text-align: center;
+    margin-top: 24px;
+  }
+}
+
+label {
+    font-family: $monts;
+    font-weight: 500;
+    font-size: 12px;
+    color: #575CB3;
+    letter-spacing: 0;
+    margin-left: 16px;
+}
+
+.edit-form-section {
+  margin: 20px 0px 10px 0px;
+}
+
+.camera-button {
+  color: transparent;
+  background-color: transparent;
+  border: none;
+  outline: none
+}
+
+.edit-profile-hr {
+  margin-bottom: 0px
 }

@@ -65,7 +65,7 @@ with app.app_context():
         quote="Theres no I in team",
         religion="",
         relationship="Divorced",
-        children="No",
+        children="None",
         employment="Unemployed"
     )
 
