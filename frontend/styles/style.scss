@@ -145,6 +145,7 @@ body {
 
 
 // ***** || SWIPE PAGE 
+
 .cardContainer {
   min-width: 327px;
   height: 343px;
@@ -272,6 +273,7 @@ body {
 
 .swipeOut {
   color: $blue;
+  text-align: center;
 }
 
 .buttons button:hover {
@@ -331,21 +333,26 @@ nav {
   button {
     border: none;
     background-color: transparent;
+    padding-top: 50%;
+    outline: none;
   }
 
   img {
     width: 24px;
-    height: 24px
+    height: 24px;
+    border: 0;
   }
 }
 
 .nav-icon:hover .icon-passive,
 .nav-icon .icon-active {
   display: none;
+  outline: none;
 }
 
 .nav-icon:hover .icon-active {
   display: inline;
+  outline: none;
 }
 
 

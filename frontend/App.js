@@ -12,6 +12,7 @@ import Message from './components/Message'
 import MyProfile from './components/MyProfile'
 import EditProfile from './components/EditProfile'
 
+
 // ! Some starter code for your frontends, change this
 // ! however you like.
 const App = () => {
