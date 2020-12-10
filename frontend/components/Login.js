@@ -28,7 +28,7 @@ const Login = (props) => {
     axios.post('/api/login', formData)
       .then(resp => {
         localStorage.setItem('token', resp.data.token)
-        props.history.push('/')
+        props.history.push('/swipe')
       })
       .then(() => {
         location.reload()

@@ -26,7 +26,7 @@ const Menu = () => {
       </button>
     </Link>
 
-    <Link to={`/profile/${getUserId()}`}>
+    <Link to={'/myprofile'}>
       <button className="nav-icon">
         <img className="icon-passive" src={profilePassive} alt={'profile-passive'} />
         <img className="icon-active" src={profileActive} alt={'profile-active'} />

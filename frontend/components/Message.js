@@ -121,7 +121,7 @@ function Message(props) {
 
   return <section className="bg-color">
     <section className="page-container">
-      <section className="page-content">
+      <section className="message-box">
         <div className="overflow-fade">
         </div>
         <div className="page-cover">

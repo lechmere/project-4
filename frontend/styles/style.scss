@@ -274,7 +274,9 @@ body {
   opacity: 0.75;
 }
 
-
+.swipeOut {
+  color: $blue;
+}
 
 .buttons button:hover {
   transform: scale(1.05);
@@ -535,8 +537,7 @@ hr {
   border: 1px #F0F0F0 solid;
   margin-bottom: 24px;
   margin-top: 24px;
-
-
+  width: -webkit-fill-available;
 }
 
 .message-list {
@@ -667,9 +668,11 @@ textarea {
 }
 
 .dm-inner-scroll {
-  max-height: 320px;
+  min-height: 320px;
   margin-bottom: 14px;
   overflow: scroll;
+  // display: flex;
+  // flex-direction: column-reverse;
 }
 
 .overflow-fade {
@@ -681,7 +684,13 @@ textarea {
   z-index: 3000;
 }
 
-
+.message-box {
+  height: 472px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px
+}
 
 // ----------
 
@@ -714,7 +723,7 @@ textarea {
 .edit-input-field {
   background: #EDEEFF;
   border-radius: 20px;
-  width: 279px;
+  width: 260px;
   height: 51px;
   border: none;
   color: #575CB3;
@@ -782,4 +791,13 @@ label {
 
 .edit-profile-hr {
   margin-bottom: 0px
+}
+
+.overflow-fade-edit {
+  height: 50px;
+  width: 279px;
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 100%);
+  position: absolute;
+  margin-top: 410px;
+  z-index: 3000;
 }
