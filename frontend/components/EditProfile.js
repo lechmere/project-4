@@ -76,7 +76,7 @@ const EditProfile = (props) => {
     })
       .then(resp => {
         console.log(resp.data)
-        props.history.push(`/myprofile/${userId}`)
+        props.history.push(`/myprofile/`)
       })
   }
 
@@ -84,8 +84,6 @@ const EditProfile = (props) => {
   return <section className="bg-color">
     <section className="page-container">
       <section className="message-box">
-        <div className="overflow-fade-edit">
-        </div>
         <div className="edit-cover">
           <img className="profile-image" src={userInfo.image} alt={'user profile image'} />
           <h1>{userInfo.first_name}</h1>
@@ -117,17 +115,6 @@ const EditProfile = (props) => {
                 name="email"
               />
             </div>
-
-            <div className="form-section">
-              <input
-                placeholder="Password"
-                className="edit-input-field"
-                type="password"
-                onChange={handleChange}
-                value={formData.password}
-                name="password"
-              />
-            </div >
 
             <div className="edit-form-section">
               <label>Bio</label>
