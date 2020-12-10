@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 import { getUserId } from '../lib/auth'
 // import { useHistory } from 'react-router-dom'
 import camera from '../images/camera.svg'
+import Menu from '../components/Menu'
 
 const EditProfile = (props) => {
   const token = localStorage.getItem('token')
@@ -165,60 +166,8 @@ const EditProfile = (props) => {
         </form>
       </section>
     </section>
+    <Menu />
   </section>
 }
 
 export default EditProfile
-
-//   < img className = "profile-image" src = { userInfo.image } alt = { 'user profile image'} />
-// <button
-//   className="button-green"
-//   onClick={handleUpload}
-// >
-//       Click to upload
-// </button>
-
-
-// <input
-//   placeholder={userInfo.first_name}
-//   onChange={handleChange}
-//   value={formData.first_name}
-//   name="first_name"
-// />
-
-// <input
-//   placeholder={userInfo.email}
-//   onChange={handleChange}
-//   value={formData.email}
-//   name="email"
-// />
-
-// <input
-//   placeholder="******"
-//   onChange={handleChange}
-//   value={formData.password}
-//   name="password"
-// />
-
-// <input
-//   placeholder={userInfo.bio}
-//   onChange={handleChange}
-//   value={formData.bio}
-//   name="bio"
-// />
-
-// <input
-//   placeholder={userInfo.quote}
-//   onChange={handleChange}
-//   value={formData.quote}
-//   name="quote"
-// />
-
-// <input
-//   placeholder={userInfo.religion}
-//   onChange={handleChange}
-//   value={formData.religion}
-//   name="religion"
-// />
-
-// <button onClick={handleSubmit}>Update</button>

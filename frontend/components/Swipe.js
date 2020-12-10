@@ -7,7 +7,7 @@ import decline from '../images/error-circle.svg'
 import accept from '../images/heart-circle.svg'
 import Modal from './modal/Modal'
 import { getUserId } from '../lib/auth'
-
+import Menu from '../components/Menu'
 
 function Swipe() {
   // const characters = db
@@ -139,13 +139,8 @@ function Swipe() {
         <button className="button-style" id="button-style-right"><img className="button-img" id="accept" src={accept} onClick={() => clicked(characters[characters.length - 1], 'right')} alt={'accept'} /></button>
       </div>
       {lastDirection ? <h2 className='infoText'>You swiped {lastDirection}</h2> : <h2 className='infoText'> Get Swiping</h2>}
-
-      {/* {itsAMatch === true ?
-        <h1>ITS A MATCH!!!</h1>
-        :
-        <h1>NOT A MATCH!!</h1>
-      } */}
     </div>
+    <Menu />
   </div>
   
 
